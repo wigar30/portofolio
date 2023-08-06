@@ -1,6 +1,6 @@
 <template>
   <div class="h-screen">
-    <div id="contact" class="h-20 bg-white">
+    <div id="contact" class="header h-20 bg-white">
       <span class="text-black">contact</span>
       
     </div>

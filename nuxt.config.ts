@@ -2,6 +2,14 @@
 export default defineNuxtConfig({
   devtools: { enabled: false },
 
+  ssr: false,
+
+  app: {
+    head: {
+      title: 'Lunaris Labs'
+    }
+  },
+
   modules: [
     '@nuxthq/ui',
     '@nuxtjs/google-fonts'

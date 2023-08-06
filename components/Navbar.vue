@@ -11,7 +11,6 @@
 </template>
 
 <script setup lang="ts">
-const route = useRoute()
 defineProps({
   currentActive: {
     type: String,

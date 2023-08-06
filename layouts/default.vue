@@ -22,7 +22,7 @@ onMounted(() => {
     rootMargin: '0px 0px -60% 0px'
   })
 
-  document.querySelectorAll('div div div div.main div div div').forEach((section) => {
+  document.querySelectorAll('div div div div.main div div div.header').forEach((section) => {
     observer.observe(section)
   })
 })
