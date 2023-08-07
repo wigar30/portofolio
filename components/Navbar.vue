@@ -2,7 +2,7 @@
   <nav class="w-full h-20 py-4 sticky top-0 z-[999]">
     <UContainer class="w-full h-full flex items-center justify-end space-x-6">
       <div v-for="(item, i) in menus" :key="i">
-        <ULink class="scroll-smooth" exact-hash :class="{ 'route-active': item.key === currentActive, 'route-inactive': item.key !== currentActive }" :to="{ path: '/', hash: item.to }">
+        <ULink class="scroll-smooth" exact-hash :class="{ 'route-active': item.key === currentActive, 'route-inactive': item.key !== currentActive }" :to="{ hash: item.to }">
           <span class="text-sm text-neutral-700 dark:text-neutral-400 font-semibold">{{ item.label }}</span>
         </ULink>
       </div>
@@ -20,7 +20,7 @@ defineProps({
 
 const menus = [
   {
-    to: '',
+    to: '#home',
     key: 'home',
     label: 'Home'
   },
