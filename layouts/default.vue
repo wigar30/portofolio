@@ -1,14 +1,14 @@
 <template>
   <div class="w-full h-full min-h-screen bg-neutral-200 dark:bg-neutral-800">
     <Navbar :current-active="currentSection" />
-    <UContainer class="main h-full">
+    <main class="main w-full h-full">
       <slot />
-    </UContainer>
-    <UButton square class="fixed bottom-12 right-12" color="primary" variant="ghost" :ui="{ rounded: 'rounded-full' }" :to="`#${link}`">
+    </main>
+    <UButton square class="fixed bottom-12 right-12 z-50" color="primary" variant="ghost" :ui="{ rounded: 'rounded-full' }" :to="`#${link}`">
       <UIcon
         class="w-12 h-12 text-primary-500 transition-transform transform"
         :class="{
-          '!rotate-180': state.newValue !== 'home'
+          '!rotate-180': currentSection !== 'home'
         }"
         name="i-heroicons-arrow-long-down"
       />
@@ -19,13 +19,10 @@
 <script setup>
 const route = useRoute()
 const router = useRouter()
+const store = useStoreMenu()
 
 const menus = ['home', 'about-me', 'my-works', 'contact']
 const currentSection = ref('')
-const state = ref({
-  oldValue: 'home',
-  newValue: ''
-})
 
 onMounted(() => {
   if (route.hash) {
@@ -36,17 +33,15 @@ onMounted(() => {
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
-        console.log('asd', entry.target.getAttribute('id'))
         currentSection.value = entry.target.getAttribute('id')
-        state.value.oldValue = state.value.newValue
-        state.value.newValue = currentSection.value
+        store.setMenu(currentSection.value)
       }
     })
   }, {
     rootMargin: '0px 0px -60% 0px'
   })
 
-  document.querySelectorAll('div div div div.main div div div.header').forEach((section) => {
+  document.querySelectorAll('div div div main div div div.header').forEach((section) => {
     observer.observe(section)
   })
 })

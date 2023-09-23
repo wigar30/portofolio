@@ -1,12 +1,14 @@
 <template>
-  <div class="h-screen">
+  <UContainer class="w-full h-screen">
     <div id="contact" class="header h-20 bg-white">
       <span class="text-black">contact</span>
       
     </div>
-  </div>
+  </UContainer>
 </template>
 
 <script setup lang="ts">
-
+defineOptions({
+  name: 'ContactComponent'
+})
 </script>

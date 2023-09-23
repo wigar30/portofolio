@@ -1,5 +1,5 @@
 <template>
-  <nav class="w-full h-20 py-4 sticky top-0 z-[999]">
+  <nav class="w-full h-20 py-4 fixed top-0 z-[999]">
     <UContainer class="w-full h-full flex items-center justify-end space-x-6">
       <div v-for="(item, i) in menus" :key="i">
         <ULink class="scroll-smooth" exact-hash :class="{ 'route-active': item.key === currentActive, 'route-inactive': item.key !== currentActive }" :to="{ hash: item.to }">
@@ -11,6 +11,10 @@
 </template>
 
 <script setup lang="ts">
+defineOptions({
+  name: 'NavbarComponent'
+})
+
 defineProps({
   currentActive: {
     type: String,
@@ -40,7 +44,6 @@ const menus = [
     label: 'Contact'
   }
 ]
-
 </script>
 
 <style>

@@ -1,19 +1,24 @@
 <template>
-  <div class="h-screen">
-    <div id="home" class="header h-20">
-    </div>
+  <div class="w-full h-screen">
+    <div id="home" class="header h-20" />
 
-    <div id="home-text" class="w-full h-full flex items-center justify-center flex-col text-center space-y-4 -mt-40" >
-      <p class="text-7xl font-black fade-out" :class="isAnimated ? 'fade-in' : ''">Hey.</p>
-      <div class="flex">
-        <span class="text-6xl font-black whitespace-pre-wrap fade-out" :class="isAnimated ? 'fade-in' : ''">Welcome To My </span>
-        <span class="text-6xl font-black underline decoration-primary-500 fade-in-hidden" :class="isAnimated ? 'fade-in' : ''">Portofolio.</span>
+    <BackgroundHome>
+      <div id="home-text" class="w-full h-full flex items-center justify-center flex-col text-center space-y-4 z-20 absolute opacity-100" >
+        <p class="text-7xl font-black fade-out text-white" :class="isAnimated ? 'fade-in' : ''">Hey.</p>
+        <div class="flex">
+          <span class="text-6xl font-medium whitespace-pre-wrap fade-out" :class="isAnimated ? 'fade-in' : ''">Welcome To My </span>
+          <NuxtLink class="text-6xl font-medium underline decoration-primary-500 fade-in-hidden" :to="'/#about-me'" :class="isAnimated ? 'fade-in' : ''">Portofolio.</NuxtLink>
+        </div>
       </div>
-    </div>
+    </BackgroundHome>
   </div>
 </template>
 
 <script setup lang="ts">
+defineOptions({
+  name: 'HomeComponent'
+})
+
 const isAnimated = ref(false)
 
 const elementIsVisibleInViewport = (el: any, partiallyVisible = false) => {
@@ -49,5 +54,11 @@ onMounted(() => {
 .fade-in {
   opacity: 1;
   transform: translate(0, 0);
+}
+
+.blur-bottom {
+  box-shadow: 0px -26px 30px 5px rgba(38,38,38,1) inset;
+-webkit-box-shadow: 0px -26px 30px 5px rgba(38,38,38,1) inset;
+-moz-box-shadow: 0px -26px 30px 5px rgba(38,38,38,1) inset;
 }
 </style>

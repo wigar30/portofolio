@@ -12,7 +12,8 @@ export default defineNuxtConfig({
 
   modules: [
     '@nuxthq/ui',
-    '@nuxtjs/google-fonts'
+    '@nuxtjs/google-fonts',
+    '@pinia/nuxt'
   ],
 
   css: ['~/assets/css/main.css'],
@@ -28,7 +29,15 @@ export default defineNuxtConfig({
 
   googleFonts: {
     families: {
-      'Montserrat': true,
+      'Plus Jakarta Sans': true,
     },
+  },
+
+  imports: {
+    dirs: ['./stores'],
+  },
+
+  pinia: {
+    autoImports: ['defineStore', 'acceptHMRUpdate'],
   },
 })
