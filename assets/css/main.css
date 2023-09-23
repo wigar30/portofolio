@@ -14,4 +14,24 @@
 html {
   font-family: Plus Jakarta Sans;
   scroll-behavior: smooth;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  scrollbar-color: theme('colors.amber.500') theme('colors.neutral.800');
+}
+
+html::-webkit-scrollbar {
+  width: 10px;
+}
+
+html::-webkit-scrollbar-track {
+  background: theme('colors.neutral.800');
+  border-radius: 5px;
+}
+
+html::-webkit-scrollbar-thumb {
+  background-color: theme('colors.amber.500');
+  border-radius: 14px;
+  border: 3px solid theme('colors.neutral.800');
 }

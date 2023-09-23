@@ -1,9 +1,6 @@
 <template>
   <UContainer class="w-full h-screen">
-    <div id="contact" class="header h-20 bg-white">
-      <span class="text-black">contact</span>
-      
-    </div>
+    <div id="contact" class="header h-20" />
   </UContainer>
 </template>
 

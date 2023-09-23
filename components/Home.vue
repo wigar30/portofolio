@@ -19,25 +19,22 @@ defineOptions({
   name: 'HomeComponent'
 })
 
+const { activeMenu } = useMenu()
+const timeOut = ref<ReturnType<typeof setTimeout> | null>(null)
 const isAnimated = ref(false)
 
-const elementIsVisibleInViewport = (el: any, partiallyVisible = false) => {
-  const { top, left, bottom, right } = el.getBoundingClientRect();
-  const { innerHeight, innerWidth } = window;
-  return partiallyVisible
-    ? ((top > 0 && top < innerHeight) ||
-        (bottom > 0 && bottom < innerHeight)) &&
-        ((left > 0 && left < innerWidth) || (right > 0 && right < innerWidth))
-    : top >= 0 && left >= 0 && bottom <= innerHeight && right <= innerWidth;
-}
+watch(activeMenu, (newValue: string) => {
+  if (timeOut.value) clearTimeout(timeOut.value)
 
-onMounted(() => {
-  const homeText = document.getElementById('home-text')
-  setTimeout(() => {
-    if (elementIsVisibleInViewport(homeText)) {
+  if (newValue === 'home') {
+    timeOut.value = setTimeout(() => {
       isAnimated.value = true
-    }
-  }, 700)
+    }, 200)
+  } else {
+    timeOut.value = setTimeout(() => {
+      isAnimated.value = false
+    }, 200)
+  }
 })
 </script>
 
@@ -54,11 +51,5 @@ onMounted(() => {
 .fade-in {
   opacity: 1;
   transform: translate(0, 0);
-}
-
-.blur-bottom {
-  box-shadow: 0px -26px 30px 5px rgba(38,38,38,1) inset;
--webkit-box-shadow: 0px -26px 30px 5px rgba(38,38,38,1) inset;
--moz-box-shadow: 0px -26px 30px 5px rgba(38,38,38,1) inset;
 }
 </style>

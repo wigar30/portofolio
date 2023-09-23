@@ -13,7 +13,7 @@ module.exports = {
         'color-dark': colors.gray[200],
       },
       animation: {
-        blob: 'blob 10s infinite',
+        blob: 'blob 8s infinite',
       },
       keyframes: {
         blob: {
