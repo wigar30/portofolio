@@ -1,9 +1,9 @@
 <template>
-  <div class="w-full h-screen">
+  <div class="w-full min-h-screen">
     <div id="home" class="header h-20" />
 
-    <BackgroundHome>
-      <div id="home-text" class="w-full h-full flex items-center justify-center flex-col text-center space-y-4 z-20 absolute opacity-100" >
+    <BackgroundHome class="z-0">
+      <div id="home-text" class="w-full h-section flex items-center justify-center flex-col text-center space-y-4 z-10 absolute opacity-100">
         <p class="text-7xl font-black fade-out text-white" :class="isAnimated ? 'fade-in' : ''">Hey.</p>
         <div class="flex">
           <span class="text-6xl font-medium whitespace-pre-wrap fade-out" :class="isAnimated ? 'fade-in' : ''">Welcome To My </span>
@@ -16,7 +16,7 @@
 
 <script setup lang="ts">
 defineOptions({
-  name: 'HomeComponent'
+  name: 'HomeComponent',
 })
 
 const { activeMenu } = useMenu()

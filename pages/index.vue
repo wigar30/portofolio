@@ -1,12 +1,10 @@
 <template>
-  <div>
+  <div class="flex flex-col">
     <Home />
-    <AboutMe />
     <MyWorks />
+    <AboutMe />
     <Contact />
   </div>
 </template>
 
-<script setup>
-
-</script>
+<script setup></script>

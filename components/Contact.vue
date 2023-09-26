@@ -6,6 +6,6 @@
 
 <script setup lang="ts">
 defineOptions({
-  name: 'ContactComponent'
+  name: 'ContactComponent',
 })
 </script>

@@ -6,15 +6,15 @@ export default defineNuxtConfig({
 
   app: {
     head: {
-      title: 'Lunaris Labs'
-    }
+      title: 'Lunaris Labs',
+    },
   },
 
-  modules: [
-    '@nuxthq/ui',
-    '@nuxtjs/google-fonts',
-    '@pinia/nuxt'
-  ],
+  modules: ['@nuxt/ui', '@nuxtjs/google-fonts', '@pinia/nuxt', '@nuxt/image'],
+
+  image: {
+    dir: 'assets/images',
+  },
 
   css: ['~/assets/css/main.css'],
 

@@ -1,9 +1,9 @@
 <template>
-  <div class="w-full h-screen">
+  <div class="w-full min-h-screen">
     <div id="about-me" class="header h-20" />
 
-    <BackgroundAboutMe>
-      <UContainer as="section" class="w-screen h-section flex items-center">
+    <BackgroundAboutMe class="z-0">
+      <UContainer as="section" class="absolute w-screen flex items-center z-10">
         <CardAboutMe id="about-me-card" :animate="isAnimated" />
       </UContainer>
     </BackgroundAboutMe>
@@ -12,7 +12,7 @@
 
 <script setup lang="ts">
 defineOptions({
-  name: 'AboutMeComponent'
+  name: 'AboutMeComponent',
 })
 
 const { activeMenu } = useMenu()
@@ -28,9 +28,8 @@ watch(activeMenu, (newValue: string) => {
     }, 200)
   } else {
     timeOut.value = setTimeout(() => {
-    isAnimated.value = false
+      isAnimated.value = false
     }, 200)
   }
 })
-
 </script>

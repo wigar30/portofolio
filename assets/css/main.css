@@ -18,7 +18,7 @@ html {
 }
 
 html {
-  scrollbar-color: theme('colors.amber.500') theme('colors.neutral.800');
+  scrollbar-color: theme('colors.neutral.100') theme('colors.neutral.800');
 }
 
 html::-webkit-scrollbar {
@@ -31,7 +31,7 @@ html::-webkit-scrollbar-track {
 }
 
 html::-webkit-scrollbar-thumb {
-  background-color: theme('colors.amber.500');
+  background-color: theme('colors.neutral.100');
   border-radius: 14px;
   border: 3px solid theme('colors.neutral.800');
 }

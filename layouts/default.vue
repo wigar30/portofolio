@@ -8,7 +8,7 @@
       <UIcon
         class="w-12 h-12 text-primary-500 transition-transform transform"
         :class="{
-          '!rotate-180': currentSection !== 'home'
+          '!rotate-180': currentSection !== 'home',
         }"
         name="i-heroicons-arrow-long-down"
       />
@@ -30,16 +30,19 @@ onMounted(() => {
       router.push({ hash: route.hash })
     }, 1500)
   }
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        currentSection.value = entry.target.getAttribute('id')
-        store.setMenu(currentSection.value)
-      }
-    })
-  }, {
-    rootMargin: '0px 0px -60% 0px'
-  })
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          currentSection.value = entry.target.getAttribute('id')
+          store.setMenu(currentSection.value)
+        }
+      })
+    },
+    {
+      rootMargin: '0px 0px -60% 0px',
+    },
+  )
 
   document.querySelectorAll('div div div main div div div.header').forEach((section) => {
     observer.observe(section)

@@ -4,9 +4,10 @@
     :class="[
       index > 1 ? `ml-${index * 3} mt-${index * 3} hover:translate-x-2 delay-100 active:translate-x-4 active:delay-0 active:duration-100` : '',
       active ? 'translate-x-4 delay-0 duration-100' : '',
-      animating ? `translate-x-0 delay-${index * 200} duration-100` : ''
+      animating ? `translate-x-0 delay-${index * 200} duration-100` : '',
     ]"
-    @click="handleClickCard">
+    @click="handleClickCard"
+  >
     <div class="w-[400px] relative h-[500px] m-2 p-4 bg-neutral-800 rounded-lg overflow-hidden">
       <div class="absolute top-[10%] -left-[30%] w-80 h-80 bg-gray-600 rounded-full animate-blob blur-xl" />
       <div class="absolute bottom-[10%] right-[10%] w-20 h-20 bg-gray-600 rounded-full blur-xl" />
@@ -17,31 +18,31 @@
 
 <script setup lang="ts">
 type AboutMeItem = {
-  locale: string,
+  locale: string
   content: string
 }
 
 const props = defineProps({
   index: {
     type: Number,
-    required: true
+    required: true,
   },
   content: {
     type: Object as PropType<AboutMeItem>,
-    required: true
+    required: true,
   },
   active: {
     type: Boolean,
-    default: false
+    default: false,
   },
   animating: {
     type: Boolean,
-    default: false
-  }
+    default: false,
+  },
 })
 
 defineOptions({
-  name: 'CardAboutMeItemComponent'
+  name: 'CardAboutMeItemComponent',
 })
 
 const emit = defineEmits<{
