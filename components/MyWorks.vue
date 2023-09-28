@@ -2,11 +2,9 @@
   <div class="w-full min-h-screen">
     <div id="my-works" class="header h-20" />
 
-    <BackgroundMyWorks class="z-0">
-      <UContainer as="section" class="absolute w-screen flex items-center z-10">
-        <CardMyWorks id="my-works-card" :animate="isAnimated" />
-      </UContainer>
-    </BackgroundMyWorks>
+    <UContainer as="section" class="w-screen flex items-center z-10">
+      <CardMyWorks id="my-works-card" :animate="isAnimated" />
+    </UContainer>
   </div>
 </template>
 

@@ -29,14 +29,14 @@ const menus = [
     label: 'Home',
   },
   {
-    to: '#my-works',
-    key: 'my-works',
-    label: 'My Works',
-  },
-  {
     to: '#about-me',
     key: 'about-me',
     label: 'About Me',
+  },
+  {
+    to: '#my-works',
+    key: 'my-works',
+    label: 'My Works',
   },
   {
     to: '#contact',

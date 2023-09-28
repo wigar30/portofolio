@@ -40,7 +40,10 @@ watch(active, (value) => {
   }, 200)
 })
 
-const handleFlipCard = (i: number) => {
+/**
+ * Reverse array of contents and set active to true
+ */
+const handleFlipCard = () => {
   active.value = true
 
   const arr = contents.value
