@@ -20,9 +20,18 @@
 const route = useRoute()
 const router = useRouter()
 const store = useStoreMenu()
+const { setColor } = useColor()
+const { getLocalStorage } = useStorageLocal()
 
 const menus = ['home', 'about-me', 'my-works', 'contact']
 const currentSection = ref('')
+
+onBeforeMount(() => {
+  const color = getLocalStorage('primary')
+  if (color) {
+    setColor(color)
+  }
+})
 
 onMounted(() => {
   if (route.hash) {
