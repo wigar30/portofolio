@@ -37,7 +37,7 @@ watch(active, (value) => {
 
   timer.value = setTimeout(() => {
     active.value = false
-  }, 200)
+  }, 400)
 })
 
 /**

@@ -20,6 +20,7 @@
   <UModal
     v-model="isOpen"
     :ui="{
+      container: 'mt-20',
       width: 'sm:max-w-full sm:w-3/4 md:w-1/2',
     }"
   >
