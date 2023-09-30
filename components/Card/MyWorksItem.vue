@@ -7,22 +7,21 @@
   >
     <p class="text-lg font-semibold text-neutral-200 mb-4">{{ content.name }}</p>
 
-    <div class="w-full flex flex-nowrap overflow-hidden relative rounded-lg" :class="[left ? 'justify-end' : 'justify-start', content.images?.length ? 'h-40' : 'h-0']">
+    <div class="w-full flex flex-nowrap overflow-hidden relative rounded-lg cursor-pointer" :class="[left ? 'justify-end' : 'justify-start', content.images?.length ? 'h-40' : 'h-0']">
       <div
         v-for="(img, i) in content.images"
         :key="i"
-        class="w-64 h-full absolute last:shadow-none overflow-hidden rounded-lg transition-transform duration-300"
+        class="w-64 h-full absolute last:shadow-none overflow-hidden rounded-lg transition-transform duration-300 cursor-pointer"
         :class="[
           `z-[${content?.images?.length ? content.images.length - i : 0}]`,
           animating ? (left ? `-translate-x-[${i * 80}px] shadow-img-left` : `translate-x-[${i * 80}px] shadow-img-right`) : left ? 'translate-x-[100%]' : '-translate-x-[100%]',
           getRandomDelay(),
         ]"
+        @click="handleOpenModal"
       >
         <img :src="img" class="object-cover object-right h-auto transform scale-[2] translate-y-10" />
       </div>
     </div>
-
-    <p>{{ content.excerpt }}</p>
 
     <template #footer>
       <div class="w-full flex items-center justify-between">
@@ -49,7 +48,6 @@
 <script setup lang="ts">
 type MyWorksItem = {
   name: string
-  excerpt: string
   desc: string
   tech: string[]
   images?: string[]

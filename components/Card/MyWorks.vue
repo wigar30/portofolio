@@ -38,35 +38,30 @@ defineOptions({
 const contents = [
   {
     name: 'Gameskii Landing Page',
-    excerpt: '',
     desc: '',
     tech: ['Vue.js', 'TailwindCSS'],
     images: [gameskiiLanding1, gameskiiLanding2, gameskiiLanding3],
   },
   {
     name: 'Perhutani Asme',
-    excerpt: '',
     desc: '',
     tech: ['Nuxt', 'TailwindCSS', 'Laravel'],
     images: [asme1, asme2, asme3, asme4, asme5],
   },
   {
     name: 'Gredu Dashboard',
-    excerpt: '',
     desc: '',
     tech: ['Next.js', 'React Query', 'Ant Design'],
     images: [gredu1, gredu2, gredu3, gredu4],
   },
   {
     name: 'SocioTrade',
-    excerpt: '',
     desc: '',
     tech: ['Nuxt', 'TailwindCSS'],
     images: [trade1, trade2, trade3, trade4],
   },
   {
     name: 'SocioForest',
-    excerpt: '',
     desc: '',
     tech: ['Nuxt', 'TailwindCSS'],
     images: [forest1, forest2],
