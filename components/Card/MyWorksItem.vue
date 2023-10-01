@@ -5,7 +5,7 @@
       divide: 'divide-y divide-primary-200 dark:divide-primary-800',
     }"
   >
-    <p class="text-lg font-semibold text-neutral-200 mb-4">{{ content.name }}</p>
+    <p class="text-lg font-semibold text-gray-200 mb-4">{{ content.name }}</p>
 
     <div class="w-full flex flex-nowrap overflow-hidden relative rounded-lg cursor-pointer" :class="[left ? 'justify-end' : 'justify-start', content.images?.length ? 'h-40' : 'h-0']">
       <div

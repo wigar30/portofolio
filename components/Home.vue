@@ -6,16 +6,16 @@
       <div id="home-text" class="w-full h-section flex items-center justify-center flex-col space-y-4 z-10 absolute opacity-100">
         <div>
           <div class="flex">
-            <p id="div-text" class="font-bold"></p>
+            <p id="div-text" class="font-bold text-xl"></p>
             <p class="text-7xl font-black fade-out text-white" :class="isAnimated ? 'fade-in' : ''">Hey. I'm Wigar</p>
             <p class="text-7xl font-black delay-700 duration-1000 text-white transition-opacity" :class="isAnimated ? 'fade-in' : 'fade-out'">,</p>
           </div>
           <div class="flex flex-col">
             <p class="text-6xl font-medium whitespace-pre-wrap fade-out" :class="isAnimated ? 'fade-in' : ''">a frontend developer based in Yogyakarta</p>
-            <div class="flex items-end mt-4">
-              <p class="text-6xl font-medium whitespace-pre-wrap fade-out" :class="isAnimated ? 'fade-in' : ''">Welcome To My</p>
+            <div class="flex items-end mt-6">
+              <p class="text-6xl font-medium whitespace-pre-wrap fade-out" :class="isAnimated ? 'fade-in' : ''">welcome to my</p>
               <NuxtLink class="text-6xl font-medium underline decoration-primary-500 fade-in-hidden" :to="'/#about-me'" :class="isAnimated ? 'fade-in' : ''">Portofolio.</NuxtLink>
-              <p id="end-div-text" class="font-bold"></p>
+              <p id="end-div-text" class="font-bold text-2xl"></p>
             </div>
           </div>
         </div>

@@ -1,9 +1,8 @@
 <template>
   <div class="flex flex-col">
     <Home />
-    <AboutMe />
     <MyWorks />
-    <Contact />
+    <AboutMe />
   </div>
 </template>
 

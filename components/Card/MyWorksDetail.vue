@@ -6,7 +6,7 @@
     }"
   >
     <template #header>
-      <p class="text-xl font-semibold text-neutral-200 mb-4">{{ content.name }}</p>
+      <p class="text-xl font-semibold text-gray-200 mb-4">{{ content.name }}</p>
 
       <div class="w-full flex items-center whitespace-nowrap overflow-x-auto styled-scroll space-x-2">
         <div v-for="(img, i) in content.images" :key="i" class="w-64 max-h-40 flex-none inline-block overflow-hidden rounded-lg cursor-pointer" @click="handleOpenImage(img)">

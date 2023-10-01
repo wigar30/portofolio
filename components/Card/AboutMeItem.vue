@@ -1,17 +1,13 @@
 <template>
   <div
-    class="card w-fit absolute bg-neutral-600 border-2 border-primary-500 rounded-xl transition-transform duration-300 cursor-pointer"
-    :class="[
-      index > 1 ? `ml-${index * 3} mt-${index * 3} hover:translate-x-2` : '',
-      animating ? `translate-x-0 delay-${index * 200} duration-100` : '-translate-x-[200%] delay-0 duration-0',
-      active ? `translate-x-4 duration-100` : 'translate-x-0',
-    ]"
+    class="card w-fit absolute bg-gray-600 border-2 border-primary-500 rounded-xl transition-transform duration-300 -translate-x-[400%] cursor-pointer"
+    :class="[index > 1 ? `ml-${index * 3} mt-${index * 3} hover:translate-x-2` : '', active ? `translate-x-4 duration-100` : '', animating ? `translate-x-0 delay-${index * 200} duration-100` : '']"
     @click="handleClickCard"
   >
-    <div class="w-[400px] relative h-[500px] m-2 p-4 bg-neutral-800 rounded-lg overflow-hidden">
+    <div class="w-[400px] relative h-[500px] m-2 p-4 bg-gray-800 rounded-lg overflow-hidden">
       <div class="absolute top-[10%] -left-[30%] w-80 h-80 bg-gray-600 rounded-full animate-blob blur-xl" />
       <div class="absolute bottom-[10%] right-[10%] w-20 h-20 bg-gray-600 rounded-full blur-xl" />
-      <p class="absolute text-xl font-normal text-neutral-200 leading-8">{{ content.content }}</p>
+      <p class="absolute text-xl font-normal text-gray-200 leading-8">{{ content.content }}</p>
     </div>
   </div>
 </template>

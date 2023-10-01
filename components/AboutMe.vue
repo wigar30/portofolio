@@ -3,8 +3,9 @@
     <div id="about-me" class="header h-20" />
 
     <BackgroundAboutMe class="z-0">
-      <UContainer as="section" class="absolute w-screen h-section flex items-center z-10">
-        <CardAboutMe id="about-me-card" :animate="isAnimated" />
+      <UContainer as="section" class="absolute w-screen h-section flex justify-center space-x-6 items-center z-10">
+        <CardAboutMeProfile class="z-10" :animate="isAnimated" />
+        <CardAboutMe id="about-me-card" class="z-20" :animate="isAnimated" />
       </UContainer>
     </BackgroundAboutMe>
   </div>

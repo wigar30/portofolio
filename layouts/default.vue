@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full h-full min-h-screen bg-neutral-200 dark:bg-neutral-800">
+  <div class="w-full h-full min-h-screen bg-gray-200 dark:bg-gray-800">
     <Navbar :current-active="currentSection" />
     <main class="main w-full h-full">
       <slot />
@@ -23,7 +23,7 @@ const store = useStoreMenu()
 const { setColor } = useColor()
 const { getLocalStorage } = useStorageLocal()
 
-const menus = ['home', 'about-me', 'my-works', 'contact']
+const menus = ['home', 'about-me', 'my-works']
 const currentSection = ref('')
 
 onBeforeMount(() => {

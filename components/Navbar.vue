@@ -3,7 +3,7 @@
     <UContainer class="w-full h-full flex items-center justify-end space-x-6">
       <div v-for="(item, i) in menus" :key="i">
         <ULink class="scroll-smooth flex" exact-hash :class="{ 'route-active': item.key === currentActive, 'route-inactive': item.key !== currentActive }" :to="{ hash: item.to }">
-          <p class="text-sm leading-[14px] text-neutral-700 dark:text-neutral-400 font-semibold">{{ item.label }}</p>
+          <p class="text-sm leading-[14px] text-gray-700 dark:text-gray-400 font-semibold">{{ item.label }}</p>
         </ULink>
       </div>
 
@@ -66,19 +66,14 @@ const menus = [
     label: 'Home',
   },
   {
-    to: '#about-me',
-    key: 'about-me',
-    label: 'About Me',
-  },
-  {
     to: '#my-works',
     key: 'my-works',
     label: 'My Works',
   },
   {
-    to: '#contact',
-    key: 'contact',
-    label: 'Contact',
+    to: '#about-me',
+    key: 'about-me',
+    label: 'About Me',
   },
 ]
 
@@ -162,7 +157,8 @@ const handleChangePrimaryColor = (color: ColorState) => {
 .route-active {
   @apply py-2 px-4 border-2 border-primary-500 rounded-full bg-black;
 }
+
 .route-active p {
-  @apply text-neutral-600 dark:text-neutral-200;
+  @apply text-gray-600 dark:text-gray-200;
 }
 </style>
