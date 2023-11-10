@@ -1,6 +1,6 @@
 <template>
-  <div class="w-full columns-2">
-    <CardMyWorksItem v-for="(item, i) in contents" :key="i" :content="item" :animating="animate" :left="Math.ceil(contents.length / 2) >= i + 1" />
+  <div class="whitespace-nowrap !overflow-x-auto styled-scroll pb-1 space-x-4">
+    <CardMyWorksItem v-for="(item, i) in contents" :key="i" :content="item" :animating="animate" :left="Math.ceil(contents.length / 2) >= i + 1" class="w-[500px]" />
   </div>
 </template>
 

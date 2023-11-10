@@ -12,13 +12,13 @@
 }
 
 html {
-  font-family: Plus Jakarta Sans;
+  font-family: Comfortaa;
   scroll-behavior: smooth;
   -webkit-tap-highlight-color: transparent;
 }
 
 html {
-  scrollbar-color: theme('colors.neutral.100') theme('colors.neutral.800');
+  scrollbar-color: theme('colors.lime.100') theme('colors.lime.900');
 }
 
 html::-webkit-scrollbar {
@@ -26,18 +26,18 @@ html::-webkit-scrollbar {
 }
 
 html::-webkit-scrollbar-track {
-  background: theme('colors.neutral.800');
-  border-radius: 5px;
+  background: theme('colors.lime.900');
+  border-radius: 10px;
 }
 
 html::-webkit-scrollbar-thumb {
-  background-color: theme('colors.neutral.100');
-  border-radius: 14px;
-  border: 3px solid theme('colors.neutral.800');
+  background-color: theme('colors.lime.100');
+  border-radius: 15px;
+  border: 3px solid theme('colors.lime.900');
 }
 
 .styled-scroll {
-  scrollbar-color: theme('colors.neutral.100') theme('colors.neutral.800');
+  scrollbar-color: theme('colors.lime.100') theme('colors.lime.900');
 }
 
 .styled-scroll::-webkit-scrollbar {
@@ -45,12 +45,12 @@ html::-webkit-scrollbar-thumb {
 }
 
 .styled-scroll::-webkit-scrollbar-track {
-  background: theme('colors.neutral.800');
-  border-radius: 5px;
+  background: theme('colors.lime.900');
+  border-radius: 10px;
 }
 
 .styled-scroll::-webkit-scrollbar-thumb {
-  background-color: theme('colors.neutral.100');
+  background-color: theme('colors.lime.100');
   border-radius: 14px;
-  border: 3px solid theme('colors.neutral.800');
+  border: 3px solid theme('colors.lime.900');
 }

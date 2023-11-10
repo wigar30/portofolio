@@ -1,6 +1,5 @@
 /** @type {import('tailwindcss').Config} */
 
-const colors = require('tailwindcss/colors')
 module.exports = {
   content: ['./components/**/*.{js,vue,ts}', './layouts/**/*.vue', './pages/**/*.vue', './plugins/**/*.{js,ts}', './nuxt.config.{js,ts}', './app.vue'],
   theme: {
@@ -9,8 +8,19 @@ module.exports = {
         section: 'calc(100vh - 80px)',
       },
       colors: {
-        'color-primary': colors.gray[600],
-        'color-dark': colors.gray[200],
+        lime: {
+          50: '#f6f7f6',
+          100: '#e4e7e0',
+          200: '#c7cec1',
+          300: '#a2ae9a',
+          400: '#7d8c75',
+          500: '#62715b',
+          600: '#4d5a47',
+          700: '#414a3b',
+          800: '#333a30',
+          900: '#2f352c',
+          950: '#181c17',
+        },
       },
       animation: {
         blob: 'blob 8s infinite',

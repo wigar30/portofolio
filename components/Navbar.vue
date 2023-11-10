@@ -6,46 +6,11 @@
           <p class="text-sm leading-[14px] text-gray-700 dark:text-gray-400 font-semibold">{{ item.label }}</p>
         </ULink>
       </div>
-
-      <Popover class="relative">
-        <PopoverButton class="px-3 py-2 focus:outline-none focus-visible:ring-0">
-          <div class="rounded-full p-1 border border-gray-600">
-            <div class="w-3 h-3 rounded-full bg-primary-600" />
-          </div>
-        </PopoverButton>
-
-        <transition
-          enter-active-class="transition duration-200 ease-out"
-          enter-from-class="translate-y-1 opacity-0"
-          enter-to-class="translate-y-0 opacity-100"
-          leave-active-class="transition duration-150 ease-in"
-          leave-from-class="translate-y-0 opacity-100"
-          leave-to-class="translate-y-1 opacity-0"
-        >
-          <PopoverPanel class="absolute left-1/2 z-50 w-36 h-40 -translate-x-1/2 transform">
-            <div class="overflow-hidden rounded-lg shadow-lg border border-gray-600">
-              <div class="relative bg-gray-800 grid grid-cols-4 mx-auto p-4 gap-4">
-                <div v-for="(item, i) in colorList" :key="i" class="mx-auto" @click="handleChangePrimaryColor(item.label)">
-                  <div class="w-3 h-3 rounded-full flex items-center justify-center cursor-pointer" :class="item.color" />
-                </div>
-              </div>
-            </div>
-          </PopoverPanel>
-        </transition>
-      </Popover>
     </UContainer>
   </nav>
 </template>
 
 <script setup lang="ts">
-import { Popover, PopoverButton, PopoverPanel } from '@headlessui/vue'
-import { ColorState } from '#imports'
-
-type ColorList = {
-  label: ColorState
-  color: string
-}
-
 defineOptions({
   name: 'NavbarComponent',
 })
@@ -56,8 +21,6 @@ defineProps({
     default: 'home',
   },
 })
-
-const { setColor } = useColor()
 
 const menus = [
   {
@@ -76,81 +39,6 @@ const menus = [
     label: 'About Me',
   },
 ]
-
-const colorList: ColorList[] = [
-  {
-    label: 'red',
-    color: 'bg-red-600',
-  },
-  {
-    label: 'orange',
-    color: 'bg-orange-600',
-  },
-  {
-    label: 'amber',
-    color: 'bg-amber-600',
-  },
-  {
-    label: 'yellow',
-    color: 'bg-yellow-600',
-  },
-  {
-    label: 'lime',
-    color: 'bg-lime-600',
-  },
-  {
-    label: 'green',
-    color: 'bg-green-600',
-  },
-  {
-    label: 'emerald',
-    color: 'bg-emerald-600',
-  },
-  {
-    label: 'teal',
-    color: 'bg-teal-600',
-  },
-  {
-    label: 'cyan',
-    color: 'bg-cyan-600',
-  },
-  {
-    label: 'sky',
-    color: 'bg-sky-600',
-  },
-  {
-    label: 'blue',
-    color: 'bg-blue-600',
-  },
-  {
-    label: 'indigo',
-    color: 'bg-indigo-600',
-  },
-  {
-    label: 'violet',
-    color: 'bg-violet-600',
-  },
-  {
-    label: 'purple',
-    color: 'bg-purple-600',
-  },
-  {
-    label: 'fuchsia',
-    color: 'bg-fuchsia-600',
-  },
-  {
-    label: 'pink',
-    color: 'bg-pink-600',
-  },
-  {
-    label: 'rose',
-    color: 'bg-rose-600',
-  },
-]
-
-const handleChangePrimaryColor = (color: ColorState) => {
-  setColor(color)
-}
 </script>
 
 <style>

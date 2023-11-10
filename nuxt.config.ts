@@ -29,7 +29,7 @@ export default defineNuxtConfig({
 
   googleFonts: {
     families: {
-      'Plus Jakarta Sans': true,
+      Comfortaa: true,
     },
   },
 

@@ -45,8 +45,11 @@ const emit = defineEmits<{
   (event: 'click', index: number): void
 }>()
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const marginLeft = ['ml-2', 'ml-3', 'ml-4', 'ml-6', 'ml-8', 'ml-16']
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const marginTop = ['mt-2', 'ml-3', 'mt-4', 'mt-6', 'mt-8', 'mt-16']
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const delay = ['delay-0', 'delay-100', 'delay-200', 'delay-300', 'delay-400', 'delay-500', 'delay-600']
 
 const handleClickCard = () => {

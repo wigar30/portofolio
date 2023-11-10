@@ -1,15 +1,15 @@
 export const useTextAnimation = () => {
   const { isElementVisible } = useVisibleViewport()
-  const wordflick = (id: string, text: string, delay?: number) => {
-    const interval = ref<ReturnType<typeof setInterval> | null>(null)
-    const timeout = ref<ReturnType<typeof setTimeout> | null>(null)
-    const state = ref({
-      part: '',
-      offset: 0,
-      skip_count: 0,
-      skip_delay: 2,
-    })
+  const interval = ref<ReturnType<typeof setInterval> | null>(null)
+  const timeout = ref<ReturnType<typeof setTimeout> | null>(null)
+  const state = ref({
+    part: '',
+    offset: 0,
+    skip_count: 0,
+    skip_delay: 2,
+  })
 
+  const wordflick = (id: string, text: string, delay?: number) => {
     const getText = document.getElementById(id)
     if (!getText) return
 
@@ -18,6 +18,7 @@ export const useTextAnimation = () => {
     if (isElementVisible(getText, true) === false) {
       if (timeout.value) clearTimeout(timeout.value)
       if (interval.value) clearInterval(interval.value)
+
       state.value.offset = 0
       state.value.part = ''
       state.value.skip_count = 0
@@ -53,7 +54,16 @@ export const useTextAnimation = () => {
 
   const clearWordflick = (id: string) => {
     const getText = document.getElementById(id)
-    if (getText) getText.textContent = ''
+    if (getText) {
+      if (timeout.value) clearTimeout(timeout.value)
+      if (interval.value) clearInterval(interval.value)
+
+      state.value.offset = 0
+      state.value.part = ''
+      state.value.skip_count = 0
+
+      getText.textContent = ''
+    }
   }
 
   return {
