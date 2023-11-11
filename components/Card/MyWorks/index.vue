@@ -1,6 +1,9 @@
 <template>
-  <div class="whitespace-nowrap !overflow-x-auto styled-scroll pb-1 space-x-4">
-    <CardMyWorksItem v-for="(item, i) in contents" :key="i" :content="item" :animating="animate" :left="Math.ceil(contents.length / 2) >= i + 1" class="w-[500px]" />
+  <div
+    class="h-[600px] pr-6 mb-6 overflow-y-auto whitespace-nowrap space-y-6 after:bg-primary-900 dark:after:bg-primary-100 relative after:absolute after:h-0 after:w-0.5 after:top-0 after:right-0 after:transition-all after:duration-500"
+    :class="animate ? 'after:h-full' : 'after:h-0'"
+  >
+    <CardMyWorksItem v-for="(item, i) in contents" :key="i" :content="item" :animating="animate" class="" />
   </div>
 </template>
 
@@ -43,13 +46,19 @@ const contents = [
     images: [gameskiiLanding1, gameskiiLanding2, gameskiiLanding3],
   },
   {
+    name: 'Gameskii Dashboard',
+    desc: '',
+    tech: ['Vue.js', 'Chart.js', 'TailwindCSS'],
+    images: [gameskiiLanding1, gameskiiLanding2, gameskiiLanding3],
+  },
+  {
     name: 'Perhutani Asme',
     desc: '',
-    tech: ['Nuxt', 'TailwindCSS', 'Laravel'],
+    tech: ['Nuxt', 'PWA', 'TailwindCSS', 'Laravel'],
     images: [asme1, asme2, asme3, asme4, asme5],
   },
   {
-    name: 'Gredu Dashboard',
+    name: 'Gredu SMS Dashboard',
     desc: '',
     tech: ['Next.js', 'React Query', 'Ant Design'],
     images: [gredu1, gredu2, gredu3, gredu4],

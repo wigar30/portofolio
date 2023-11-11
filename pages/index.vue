@@ -1,6 +1,6 @@
 <template>
   <div class="h-screen">
-    <Swiper :direction="'vertical'" :slides-per-view="'auto'" :space-between="0" :mousewheel="mousewheelActive" :pagination="pagination" :modules="modules" @slide-change="handleSlideChange">
+    <Swiper :direction="'vertical'" :slides-per-view="'auto'" :space-between="0" :mousewheel="false" :pagination="pagination" :modules="modules" @swiper="handleSwiper" @reach-end="handleReachEnd">
       <SwiperSlide v-slot="{ isActive }">
         <Home :active="isActive" />
       </SwiperSlide>
@@ -9,6 +9,9 @@
       </SwiperSlide>
       <SwiperSlide v-slot="{ isActive }">
         <AboutMe :active="isActive" />
+      </SwiperSlide>
+      <SwiperSlide v-slot="{ isActive }" class="!h-fit">
+        <Contact :active="isActive" />
       </SwiperSlide>
     </Swiper>
   </div>
@@ -27,7 +30,7 @@ defineOptions({
 })
 
 const modules: SwiperModule[] = [Mousewheel, Pagination]
-const menu: string[] = ['Hello', 'My Works', 'About Me']
+const menu: string[] = ['Home', 'My Works', 'About Me']
 const timeout = ref<ReturnType<typeof setTimeout> | null>(null)
 const animatePagination = ref(false)
 
@@ -38,7 +41,7 @@ onMounted(() => {
     animatePagination.value = true
     const pagination = document.querySelector('.swiper-pagination-vertical.swiper-pagination-bullets')
     pagination?.classList.add('!left-2')
-  }, 2000)
+  }, 800)
 })
 
 const mousewheelActive: MousewheelOptions = {
@@ -53,15 +56,15 @@ const pagination: PaginationOptions = {
   },
 }
 
-const handleSlideChange = (swiper: SwiperType) => {
-  const pagination = document.querySelector('.swiper-pagination-vertical.swiper-pagination-bullets')
-  if (swiper.activeIndex !== 0) {
-    pagination?.classList.remove('!top-[150px]')
-    pagination?.classList.add('!top-[550px]')
-  } else {
-    pagination?.classList.remove('!top-[550px]')
-    pagination?.classList.add('!top-[150px]')
-  }
+const handleSwiper = (swiper: SwiperType) => {
+  swiper.pagination.bullets[3].classList.add('!hidden')
+}
+
+const handleReachEnd = (swiper: SwiperType) => {
+  nextTick(() => {
+    swiper.pagination.bullets[2].classList.add('swiper-pagination-bullet-active')
+    swiper.updateSlidesClasses()
+  })
 }
 </script>
 
@@ -84,6 +87,6 @@ const handleSlideChange = (swiper: SwiperType) => {
 }
 
 .swiper-pagination-bullet-active {
-  @apply transition-transform translate-x-2 text-base text-primary-900 dark:text-primary-100 after:w-full;
+  @apply transition-transform translate-x-3 text-base text-primary-900 dark:text-primary-100 after:w-full;
 }
 </style>

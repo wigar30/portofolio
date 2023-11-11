@@ -1,7 +1,7 @@
 <template>
   <div class="w-full h-screen">
     <BackgroundAboutMe class="z-0">
-      <UContainer as="section" class="absolute w-screen h-full flex justify-center space-x-6 items-center z-10">
+      <UContainer as="section" class="absolute w-screen h-screen flex justify-end space-x-6 items-end z-10">
         <CardAboutMe id="about-me-card" class="z-20" :animate="isAnimated" />
       </UContainer>
     </BackgroundAboutMe>

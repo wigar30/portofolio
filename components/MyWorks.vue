@@ -1,9 +1,7 @@
 <template>
   <div class="w-full h-screen">
-    <UContainer as="section" class="w-full h-screen flex items-center z-10">
-      <div class="overflow-hidden">
-        <CardMyWorks id="my-works-card" :animate="isAnimated" />
-      </div>
+    <UContainer as="section" class="w-full h-screen flex justify-end items-end z-10">
+      <CardMyWorks id="my-works-card" :animate="isAnimated" />
     </UContainer>
   </div>
 </template>

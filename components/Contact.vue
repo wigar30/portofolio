@@ -1,7 +1,7 @@
 <template>
-  <UContainer class="w-full h-screen">
-    <div id="contact" class="header h-20" />
-  </UContainer>
+  <div class="bg-primary-950 h-40">
+    <UContainer class="w-full h-full"> </UContainer>
+  </div>
 </template>
 
 <script setup lang="ts">

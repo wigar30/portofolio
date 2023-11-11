@@ -1,59 +1,12 @@
 <template>
-  <div class="inline-block">
-    <UCard
-      class="rounded-lg mb-4"
-      :ui="{
-        divide: 'divide-y divide-primary-200 dark:divide-primary-800',
-        background: 'bg-primary-900 dark:bg-primary-200',
-        shadow: 'shadow-none',
-      }"
-    >
-      <p class="text-lg font-semibold text-primary-100 dark:text-primary-900 mb-4">{{ content.name }}</p>
-
-      <div class="w-full flex flex-nowrap overflow-hidden relative rounded-lg cursor-pointer justify-start" :class="[content.images?.length ? 'h-40' : 'h-0']">
-        <div
-          v-for="(img, i) in content.images"
-          :key="i"
-          class="w-64 h-full absolute last:shadow-none overflow-hidden rounded-lg transition-transform duration-300 cursor-pointer"
-          :class="[`z-[${content?.images?.length ? content.images.length - i : 0}]`, animating ? `translate-x-[${i * 80}px] shadow-img-right` : '-translate-x-[100%]', getRandomDelay()]"
-          @click="handleOpenModal"
-        >
-          <img :src="img" class="object-cover object-right h-auto transform scale-[2] translate-y-10" />
-        </div>
+  <div class="block">
+    <div class="w-full flex justify-end items-end space-x-6">
+      <div class="space-x-2">
+        <span v-for="(tag, i) in content.tech" :key="i" class="text-primary-900 dark:text-primary-100 text-sm font-normal after:content-['|'] after:ml-2 last:after:content-none">{{ tag }}</span>
       </div>
-
-      <template #footer>
-        <div class="w-full flex items-center justify-between">
-          <div class="w-4/5 flex space-x-2">
-            <UBadge
-              v-for="(item, i) in content.tech"
-              :key="i"
-              :label="item"
-              variant="soft"
-              color="primary"
-              :ui="{
-                variant: {
-                  soft: 'text-primary-900 dark:text-primary-100 bg-primary-100 dark:bg-primary-900 dark:bg-opacity-100',
-                },
-              }"
-            >
-            </UBadge>
-          </div>
-          <div class="w-full flex justify-end">
-            <UButton
-              label="View"
-              size="xs"
-              :ui="{
-                variant: {
-                  solid: 'bg-primary-100 dark:bg-primary-900 text-primary-900 dark:text-primary-100',
-                },
-              }"
-              @click="handleOpenModal"
-            />
-          </div>
-        </div>
-      </template>
-    </UCard>
+      <span class="text-primary-900 dark:text-primary-100 text-base">•</span>
+      <span class="text-primary-900 dark:text-primary-100" :class="classes">{{ content.name }}</span>
+    </div>
 
     <UModal
       v-model="isOpen"
@@ -74,7 +27,7 @@ type MyWorksItem = {
   images?: string[]
 }
 
-defineProps({
+const props = defineProps({
   content: {
     type: Object as PropType<MyWorksItem>,
     required: true,
@@ -89,33 +42,27 @@ defineOptions({
   name: 'CardMyWorksItemComponent',
 })
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const translate = [
-  'translate-x-[0px]',
-  'translate-x-[80px]',
-  'translate-x-[160px]',
-  'translate-x-[240px]',
-  'translate-x-[320px]',
-  '-translate-x-[0px]',
-  '-translate-x-[80px]',
-  '-translate-x-[160px]',
-  '-translate-x-[240px]',
-  '-translate-x-[320px]',
-]
-
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const zIndex = ['z-[0]', 'z-[1]', 'z-[2]', 'z-[3]', 'z-[4]', 'z-[5]']
-const delay = ['delay-[0ms]', 'delay-[100ms]', 'delay-[200ms]', 'delay-[300ms]', 'delay-[400ms]', 'delay-[500ms]', 'delay-[600ms]', 'delay-[700ms]', 'delay-[800ms]', 'delay-[900ms]']
-const delayValue = [0, 100, 200, 300, 400, 500]
+const textSizes = ['text-lg', 'text-xl', 'text-1xl', 'text-2xl', 'text-3xl', 'text-4xl', 'text-5xl']
 
 const isOpen = ref(false)
+const classes = ref('')
+
+const isAnimate = computed(() => props.animating)
+
+watch(isAnimate, (value: boolean) => {
+  if (!value) classes.value = getRandomTextSize()
+})
+
+onMounted(() => {
+  classes.value = getRandomTextSize()
+})
 
 /**
  * get random index from translate array
  */
-const getRandomDelay = (): string => {
-  const index = Math.floor(Math.random() * delayValue.length)
-  return delay[index]
+const getRandomTextSize = (): string => {
+  const index = Math.floor(Math.random() * 7)
+  return textSizes[index]
 }
 
 /**
