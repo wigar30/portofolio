@@ -24,6 +24,7 @@ module.exports = {
       },
       animation: {
         blob: 'blob 8s infinite',
+        height: 'height 4s linear infinite',
       },
       keyframes: {
         blob: {
@@ -35,6 +36,29 @@ module.exports = {
           },
           '100%': {
             transform: 'translate(0px, 0px) scale(1)',
+          },
+        },
+
+        height: {
+          '0%': {
+            top: '0%',
+            bottom: '100%',
+            height: '0%',
+          },
+          '20%': {
+            top: '0%',
+            bottom: '65%',
+            height: '35%',
+          },
+          '80%': {
+            bottom: '0%',
+            top: '65%',
+            height: '35%',
+          },
+          '100%': {
+            bottom: '0%',
+            top: '100%',
+            height: '0%',
           },
         },
       },

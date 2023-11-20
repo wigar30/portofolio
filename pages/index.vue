@@ -1,6 +1,15 @@
 <template>
   <div class="h-screen">
-    <Swiper :direction="'vertical'" :slides-per-view="'auto'" :space-between="0" :mousewheel="false" :pagination="pagination" :modules="modules" @swiper="handleSwiper" @reach-end="handleReachEnd">
+    <Swiper
+      :direction="'vertical'"
+      :slides-per-view="'auto'"
+      :space-between="0"
+      :mousewheel="mousewheelActive"
+      :pagination="pagination"
+      :modules="modules"
+      @swiper="handleSwiper"
+      @reach-end="handleReachEnd"
+    >
       <SwiperSlide v-slot="{ isActive }">
         <Home :active="isActive" />
       </SwiperSlide>
@@ -57,6 +66,10 @@ const pagination: PaginationOptions = {
 }
 
 const handleSwiper = (swiper: SwiperType) => {
+  if (swiper.navigation) {
+    swiper.navigation.destroy()
+  }
+
   swiper.pagination.bullets[3].classList.add('!hidden')
 }
 

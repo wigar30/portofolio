@@ -1,6 +1,6 @@
 <template>
   <div class="w-full h-screen">
-    <BackgroundHome class="z-0">
+    <BackgroundHome class="z-0" :animate="active">
       <div id="home-text" class="w-full h-screen flex items-center justify-center flex-col space-y-4 z-10 absolute opacity-100">
         <div>
           <div class="flex">

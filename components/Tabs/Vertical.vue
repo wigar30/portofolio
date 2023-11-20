@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full h-full flex bg-primary-900 dark:bg-primary-100 rounded-3xl items-start" :class="[props.sidebarPosition === 'left' ? 'flex-row' : 'flex-row-reverse']">
+  <div class="w-full h-full flex bg-primary-900 dark:bg-primary-100 items-start" :class="[props.sidebarPosition === 'left' ? 'flex-row' : 'flex-row-reverse']">
     <div role="tablist" aria-label="tabs" class="relative w-max h-fit flex-none grid items-center px-4 py-6 overflow-hidden" :class="classes">
       <div
         class="absolute indicator h-10 w-1 top-2 bottom-0 rounded-full bg-primary-100 dark:bg-primary-900 shadow-md transition-all"
