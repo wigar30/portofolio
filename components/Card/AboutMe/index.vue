@@ -1,21 +1,14 @@
 <template>
-  <div ref="card" class="w-1/3 mb-6 relative">
-    <TabsVertical :contents="contents" sidebar-position="right">
-      <template #id>
-        <span class="text-primary-100 dark:text-primary-900"
-          >Perkenalkan nama saya Wigar Kumara Prasojo. Saya adalah seorang frontend developer yang berdomisili di kota Yogyakarta. Saya memiliki pengalaman dalam membuat website dengan menggunakan
-          teknologi seperti vuejs, nuxtjs, nextjs, dan tailwindcss. Saya juga memiliki pengalaman dalam membuat aplikasi backend dengan menggunakan teknologi nodejs dan php seperti expressjs, nestjs
-          dan laravel.</span
-        >
-      </template>
-      <template #en>
-        <span class="text-primary-100 dark:text-primary-900"
-          >My name is Wigar Kumara Prasojo. I am a frontend developer who lives in the city of Yogyakarta. I have experience in making websites using technologies such as vuejs, nuxtjs, nextjs, and
-          tailwindcss. I also have experience in making backend applications using nodejs and php technologies such as expressjs, nestjs and laravel.</span
-        >
-      </template>
-    </TabsVertical>
+  <div class="w-1/4 pb-12 text-right">
+    <span class="text-primary-900 dark:text-primary-100"
+      >My name is Wigar Kumara Prasojo. I am a frontend developer who lives in the city of Yogyakarta. I have experience in making websites using technologies such as Vuejs, Nuxt, Nextjs, and
+      Tailwindcss. I also have experience in making backend applications using Nodejs, Golang, and PHP technologies such as Expressjs, Nestjs, Go-Fiber, Gin Gonic and Laravel or Lumen.</span
+    >
   </div>
+  <div
+    class="h-[600px] mb-6 pr-6 after:bg-primary-900 dark:after:bg-primary-100 relative after:absolute after:h-0 after:w-0.5 after:bottom-0 after:right-0 after:transition-all after:duration-500"
+    :class="animate ? 'after:h-full' : 'after:h-0'"
+  />
 </template>
 
 <script setup lang="ts">
@@ -29,26 +22,8 @@ defineOptions({
   name: 'CardAboutMeComponent',
 })
 
-const contents = ref([
-  {
-    id: 'en',
-    label: 'English',
-    locale: 'en',
-    content:
-      'Hello everyone, my name is Wigar Kumara Prasojo. I am a frontend developer who lives in the city of Yogyakarta. I have experience in making websites using technologies such as vuejs, nuxtjs, nextjs, and tailwindcss. I also have experience in making backend applications using nodejs and php technologies such as expressjs, nestjs and laravel.',
-  },
-  {
-    id: 'id',
-    label: 'Bahasa',
-    locale: 'id',
-    content:
-      'Hallo semua, perkenalkan nama saya Wigar Kumara Prasojo. Saya adalah seorang frontend developer yang berdomisili di kota Yogyakarta. Saya memiliki pengalaman dalam membuat website dengan menggunakan teknologi seperti vuejs, nuxtjs, nextjs, dan tailwindcss. Saya juga memiliki pengalaman dalam membuat aplikasi backend dengan menggunakan teknologi nodejs dan php seperti expressjs, nestjs dan laravel.',
-  },
-])
-
 const active = ref(false)
-const card = ref<any>(null)
-const timer = ref<any>(null)
+const timer = ref<NodeJS.Timeout>()
 
 watch(active, (value) => {
   if (!value) return

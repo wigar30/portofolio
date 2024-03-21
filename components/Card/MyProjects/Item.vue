@@ -7,29 +7,19 @@
       <span class="text-primary-900 dark:text-primary-100 text-base">•</span>
       <span class="text-primary-900 dark:text-primary-100" :class="classes">{{ content.name }}</span>
     </div>
-
-    <UModal
-      v-model="isOpen"
-      :ui="{
-        width: 'sm:max-w-full sm:w-3/4 md:w-1/2',
-      }"
-    >
-      <CardMyWorksDetail class="w-full" :content="content" />
-    </UModal>
   </div>
 </template>
 
 <script setup lang="ts">
-type MyWorksItem = {
+type MyProjectsItem = {
   name: string
   desc: string
   tech: string[]
-  images?: string[]
 }
 
 const props = defineProps({
   content: {
-    type: Object as PropType<MyWorksItem>,
+    type: Object as PropType<MyProjectsItem>,
     required: true,
   },
   animating: {
@@ -39,12 +29,11 @@ const props = defineProps({
 })
 
 defineOptions({
-  name: 'CardMyWorksItemComponent',
+  name: 'CardMyProjectsItemComponent',
 })
 
 const textSizes = ['text-lg', 'text-xl', 'text-1xl', 'text-2xl', 'text-3xl', 'text-4xl', 'text-5xl']
 
-const isOpen = ref(false)
 const classes = ref('')
 
 const isAnimate = computed(() => props.animating)
@@ -64,14 +53,6 @@ const getRandomTextSize = (): string => {
   const index = Math.floor(Math.random() * 7)
   return textSizes[index]
 }
-
-/**
- * Handle open modal.
- * Set isOpen reactive to true
- */
-// const handleOpenModal = () => {
-//   isOpen.value = true
-// }
 </script>
 
 <style>

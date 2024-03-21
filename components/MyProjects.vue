@@ -1,14 +1,14 @@
 <template>
   <div class="w-full h-screen">
     <UContainer as="section" class="w-full h-screen flex justify-end items-end z-10">
-      <CardMyWorks id="my-works-card" :animate="isAnimated" />
+      <CardMyProjects id="my-projects-card" :animate="isAnimated" />
     </UContainer>
   </div>
 </template>
 
 <script setup lang="ts">
 defineOptions({
-  name: 'MyWorksComponent',
+  name: 'MyProjectComponent',
 })
 
 const props = defineProps({

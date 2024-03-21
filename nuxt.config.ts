@@ -6,7 +6,7 @@ export default defineNuxtConfig({
 
   app: {
     head: {
-      title: 'Lunaris Labs',
+      title: 'Wigar Kumara | Portofolio',
     },
   },
 
@@ -29,7 +29,7 @@ export default defineNuxtConfig({
 
   googleFonts: {
     families: {
-      Comfortaa: true,
+      Poppins: true,
     },
   },
 

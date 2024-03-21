@@ -17,6 +17,9 @@
         <MyWorks :active="isActive" />
       </SwiperSlide>
       <SwiperSlide v-slot="{ isActive }">
+        <MyProjects :active="isActive" />
+      </SwiperSlide>
+      <SwiperSlide v-slot="{ isActive }">
         <AboutMe :active="isActive" />
       </SwiperSlide>
       <SwiperSlide v-slot="{ isActive }" class="!h-fit">
@@ -39,7 +42,7 @@ defineOptions({
 })
 
 const modules: SwiperModule[] = [Mousewheel, Pagination]
-const menu: string[] = ['Home', 'My Works', 'About Me']
+const menu: string[] = ['Home', 'My Works', 'My Project', 'About Me']
 const timeout = ref<ReturnType<typeof setTimeout> | null>(null)
 const animatePagination = ref(false)
 
@@ -70,12 +73,12 @@ const handleSwiper = (swiper: SwiperType) => {
     swiper.navigation.destroy()
   }
 
-  swiper.pagination.bullets[3].classList.add('!hidden')
+  swiper.pagination.bullets[menu.length].classList.add('!hidden')
 }
 
 const handleReachEnd = (swiper: SwiperType) => {
   nextTick(() => {
-    swiper.pagination.bullets[2].classList.add('swiper-pagination-bullet-active')
+    swiper.pagination.bullets[3].classList.add('swiper-pagination-bullet-active')
     swiper.updateSlidesClasses()
   })
 }
