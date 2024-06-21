@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-primary-950 h-40">
+  <div class="bg-primary-600 h-40">
     <UContainer :ui="{ base: 'w-full h-full flex flex-col justify-between', padding: 'py-4' }">
       <div class="w-full flex space-x-4">
         <UTooltip text="wigar_kumara">

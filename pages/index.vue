@@ -1,13 +1,15 @@
 <template>
-  <div class="h-screen">
+  <div class="h-full">
     <Swiper
       :direction="'vertical'"
       :slides-per-view="'auto'"
       :space-between="0"
+      :speed="500"
       :mousewheel="mousewheelActive"
       :pagination="pagination"
       :modules="modules"
       @swiper="handleSwiper"
+      @slide-change="handleSlideChange"
       @reach-end="handleReachEnd"
     >
       <SwiperSlide v-slot="{ isActive }">
@@ -64,7 +66,7 @@ const mousewheelActive: MousewheelOptions = {
 const pagination: PaginationOptions = {
   clickable: true,
   renderBullet: (index: number, className: string) => {
-    return '<span class="' + className + ' custom-bullet">' + menu[index] + '</span>'
+    return '<span class="' + className + ` ${index === 0 ? 'custom-bullet-dark' : 'custom-bullet-light'}">` + menu[index] + '</span>'
   },
 }
 
@@ -73,7 +75,28 @@ const handleSwiper = (swiper: SwiperType) => {
     swiper.navigation.destroy()
   }
 
+  swiper.pagination.bullets[0].classList.add('swiper-pagination-bullet-active-dark')
   swiper.pagination.bullets[menu.length].classList.add('!hidden')
+}
+
+const handleSlideChange = (swiper: SwiperType) => {
+  nextTick(() => {
+    if (swiper.activeIndex !== 0) {
+      for (let index = 0; index <= menu.length; index++) {
+        swiper.pagination.bullets[index].classList.remove('swiper-pagination-bullet-active-dark', 'swiper-pagination-bullet-active-light')
+      }
+      swiper.pagination.bullets[0].classList.add('custom-bullet-light')
+      swiper.pagination.bullets[swiper.activeIndex].classList.add('swiper-pagination-bullet-active-light')
+      swiper.updateSlidesClasses()
+    } else {
+      for (let index = 0; index <= menu.length; index++) {
+        swiper.pagination.bullets[index].classList.remove('swiper-pagination-bullet-active-light', 'swiper-pagination-bullet-active-dark')
+      }
+      swiper.pagination.bullets[0].classList.remove('custom-bullet-light')
+      swiper.pagination.bullets[0].classList.add('swiper-pagination-bullet-active-dark')
+      swiper.updateSlidesClasses()
+    }
+  })
 }
 
 const handleReachEnd = (swiper: SwiperType) => {
@@ -92,17 +115,30 @@ const handleReachEnd = (swiper: SwiperType) => {
 
 .swiper-vertical > .swiper-pagination-bullets,
 .swiper-pagination-vertical.swiper-pagination-bullets {
-  @apply block top-[150px] -left-24 transition-all duration-500;
+  @apply block top-[150px] -left-24 transition-all duration-500 !opacity-100;
   margin: var(--swiper-pagination-bullet-vertical-gap, 6px) 0;
 }
-.custom-bullet {
-  @apply text-sm text-primary-900 dark:text-primary-100 relative after:bg-primary-900 dark:after:bg-primary-100 after:absolute after:h-0.5 after:w-0 after:bottom-0 after:left-0 after:transition-all after:duration-300 select-none;
+.swiper-pagination-bullet {
+  @apply !opacity-100;
+}
+
+.custom-bullet-dark {
+  @apply text-sm text-primary-300 dark:text-primary-700 relative after:bg-primary-300 dark:after:bg-primary-700 after:absolute after:h-0.5 after:w-0 after:bottom-0 after:left-0 after:transition-all after:duration-300 select-none;
+  background-color: transparent;
+  width: fit-content;
+  height: fit-content;
+}
+.custom-bullet-light {
+  @apply text-sm text-primary-300 dark:text-primary-300 relative after:bg-primary-700 dark:after:bg-primary-300 after:absolute after:h-0.5 after:w-0 after:bottom-0 after:left-0 after:transition-all after:duration-300 select-none;
   background-color: transparent;
   width: fit-content;
   height: fit-content;
 }
 
-.swiper-pagination-bullet-active {
-  @apply transition-transform translate-x-3 text-base text-primary-900 dark:text-primary-100 after:w-full;
+.swiper-pagination-bullet-active-dark {
+  @apply transition-transform translate-x-3 text-base text-primary-300 dark:text-primary-700 after:w-full;
+}
+.swiper-pagination-bullet-active-light {
+  @apply transition-transform translate-x-3 text-base text-primary-700 dark:text-primary-300 after:w-full;
 }
 </style>

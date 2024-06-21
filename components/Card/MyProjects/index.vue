@@ -23,7 +23,7 @@ const contents = [
   {
     name: 'Portofolio',
     desc: 'This Project use Nuxt v3, because I want to learn the newest Nuxt major update and getting to know about composition api',
-    tech: ['Nuxt.js', 'TailwindCSS'],
+    tech: ['Nuxt.js', 'TailwindCSS', 'Nuxt UI'],
   },
   {
     name: 'LunarFest',
