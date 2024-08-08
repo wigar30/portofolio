@@ -12,7 +12,7 @@
       @slide-change="handleSlideChange"
       @reach-end="handleReachEnd"
     >
-      <SwiperSlide v-slot="{ isActive }">
+      <SwiperSlide v-slot="{ isActive }" class="p-6">
         <Home :active="isActive" />
       </SwiperSlide>
       <SwiperSlide v-slot="{ isActive }">
@@ -115,8 +115,8 @@ const handleReachEnd = (swiper: SwiperType) => {
 
 .swiper-vertical > .swiper-pagination-bullets,
 .swiper-pagination-vertical.swiper-pagination-bullets {
-  @apply block top-[150px] -left-24 transition-all duration-500 !opacity-100;
-  margin: var(--swiper-pagination-bullet-vertical-gap, 6px) 0;
+  @apply block w-fit top-[150px] -left-24 transition-all duration-500 !opacity-100;
+  margin: var(--swiper-pagination-bullet-vertical-gap, 6px) 24px;
 }
 .swiper-pagination-bullet {
   @apply !opacity-100;

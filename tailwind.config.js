@@ -4,6 +4,9 @@ module.exports = {
   content: ['./components/**/*.{js,vue,ts}', './layouts/**/*.vue', './pages/**/*.vue', './plugins/**/*.{js,ts}', './nuxt.config.{js,ts}', './app.vue'],
   theme: {
     extend: {
+      fontFamily: {
+        display: ['Righteous'],
+      },
       height: {
         section: 'calc(100vh - 80px)',
       },
@@ -38,6 +41,7 @@ module.exports = {
       animation: {
         blob: 'blob 8s infinite',
         height: 'height 4s linear infinite',
+        text: 'text 5s ease infinite',
       },
       keyframes: {
         blob: {
@@ -72,6 +76,17 @@ module.exports = {
             bottom: '0%',
             top: '100%',
             height: '0%',
+          },
+        },
+
+        text: {
+          '0%, 100%': {
+            'background-size': '200% 200%',
+            'background-position': 'left center',
+          },
+          '50%': {
+            'background-size': '200% 200%',
+            'background-position': 'right center',
           },
         },
       },

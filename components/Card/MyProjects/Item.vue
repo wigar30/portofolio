@@ -5,7 +5,7 @@
         <span v-for="(tag, i) in content.tech" :key="i" class="text-primary-900 dark:text-primary-100 text-sm font-normal after:content-['|'] after:ml-2 last:after:content-none">{{ tag }}</span>
       </div>
       <span class="text-primary-900 dark:text-primary-100 text-base">•</span>
-      <span class="text-primary-900 dark:text-primary-100" :class="classes">{{ content.name }}</span>
+      <span class="text-primary-900 dark:text-primary-100 font-display hover:grad transition-all" :class="classes">{{ content.name }}</span>
     </div>
   </div>
 </template>

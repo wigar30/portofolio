@@ -5,7 +5,7 @@
         <span v-for="(tag, i) in content.tech" :key="i" class="text-primary-900 dark:text-primary-100 text-sm font-normal after:content-['|'] after:ml-2 last:after:content-none">{{ tag }}</span>
       </div>
       <span class="text-primary-900 dark:text-primary-100 text-base">•</span>
-      <span class="text-primary-900 dark:text-primary-100" :class="classes">{{ content.name }}</span>
+      <span class="text-primary-900 dark:text-primary-100 font-display hover:grad transition-all h-fit" :class="classes">{{ content.name }}</span>
     </div>
 
     <UModal
@@ -61,7 +61,7 @@ onMounted(() => {
  * get random index from translate array
  */
 const getRandomTextSize = (): string => {
-  const index = Math.floor(Math.random() * 7)
+  const index = Math.floor(Math.random() * 6)
   return textSizes[index]
 }
 
@@ -91,5 +91,9 @@ const getRandomTextSize = (): string => {
   box-shadow: -18px 6px 42px 9px rgba(0, 0, 0, 0.75);
   -webkit-box-shadow: -18px 6px 42px 9px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: -18px 6px 42px 9px rgba(0, 0, 0, 0.75);
+}
+
+.hover\:grad:hover {
+  @apply text-6xl font-bold animate-text bg-gradient-to-r from-primary-100 via-primary-600 to-primary-100 bg-clip-text text-transparent;
 }
 </style>

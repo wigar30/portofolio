@@ -42,6 +42,7 @@ const contents = [
   {
     name: 'Gameskii Landing Page',
     desc: '',
+    color: 'blue',
     tech: ['Vue.js', 'TailwindCSS'],
     images: [gameskiiLanding1, gameskiiLanding2, gameskiiLanding3],
   },

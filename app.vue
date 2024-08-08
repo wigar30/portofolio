@@ -8,8 +8,6 @@
         }"
       />
     </NuxtLayout>
-
-    <UNotifications />
   </div>
 </template>
 

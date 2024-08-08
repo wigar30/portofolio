@@ -1,7 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: false },
-
   ssr: false,
 
   app: {
@@ -30,6 +29,7 @@ export default defineNuxtConfig({
   googleFonts: {
     families: {
       Poppins: true,
+      Righteous: true,
     },
   },
 
@@ -40,4 +40,6 @@ export default defineNuxtConfig({
   pinia: {
     autoImports: ['defineStore', 'acceptHMRUpdate'],
   },
+
+  compatibilityDate: '2024-07-27',
 })
