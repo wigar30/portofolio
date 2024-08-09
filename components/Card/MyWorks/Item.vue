@@ -1,6 +1,6 @@
 <template>
   <div class="w-full pl-10 flex justify-end">
-    <div class="w-fit group/wrapper group/grad hover:wrapper cursor-pointer" :class="isFlash ? 'animate-flash' : 'animate-wrap'" @click="handleFlash">
+    <div class="w-fit group/wrapper group/grad hover:wrapper cursor-pointer z-10" :class="isFlash ? 'animate-flash' : 'animate-wrap'" @click="handleFlash">
       <div class="w-fit flex justify-end items-end space-x-6 bg-primary-950 rounded-lg px-6 p-1">
         <div class="space-x-2 group-hover/wrapper:skew-x-12">
           <span v-for="(tag, i) in content.tech" :key="i" class="text-primary-900 dark:text-primary-100 text-sm font-normal after:content-['|'] after:ml-2 last:after:content-none">{{ tag }}</span>
@@ -90,7 +90,7 @@ const handleFlash = () => {
 }
 
 .hover\:wrapper:hover {
-  @apply p-2 rounded-xl -skew-x-12 bg-gradient-to-r from-primary-600 via-primary-100 to-primary-600;
+  @apply p-2 -skew-x-12 bg-gradient-to-r from-primary-600 via-primary-100 to-primary-600;
 }
 
 .group\/grad:hover .group-hover\/grad\:grad {

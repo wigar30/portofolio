@@ -1,6 +1,6 @@
 <template>
   <div class="w-full h-screen">
-    <UContainer as="section" class="w-full h-screen flex justify-end items-end z-10">
+    <UContainer as="section" class="w-full h-screen flex justify-end items-center z-10">
       <CardMyWorks id="my-works-card" :animate="isAnimated" />
     </UContainer>
   </div>
