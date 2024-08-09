@@ -1,6 +1,6 @@
 <template>
   <div
-    class="h-[600px] pr-6 mb-6 overflow-y-auto whitespace-nowrap space-y-6 after:bg-primary-900 dark:after:bg-primary-100 relative after:absolute after:h-0 after:w-0.5 after:top-0 after:right-0 after:transition-all after:duration-500"
+    class="h-[600px] pr-6 mb-6 overflow-y-auto whitespace-nowrap space-y-6 after:bg-primary-900 dark:after:bg-primary-100 relative after:absolute after:h-0 after:w-1 after:top-0 after:right-0 after:transition-all after:duration-500"
     :class="animate ? 'after:h-full' : 'after:h-0'"
   >
     <CardMyProjectsItem v-for="(item, i) in contents" :key="i" :content="item" :animating="animate" class="" />

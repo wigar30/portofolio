@@ -1,11 +1,13 @@
 <template>
-  <div class="block">
-    <div class="w-full flex justify-end items-end space-x-6">
-      <div class="space-x-2">
-        <span v-for="(tag, i) in content.tech" :key="i" class="text-primary-900 dark:text-primary-100 text-sm font-normal after:content-['|'] after:ml-2 last:after:content-none">{{ tag }}</span>
+  <div class="w-full pl-10 flex justify-end">
+    <div class="w-fit group/wrapper group/grad hover:wrapper cursor-pointer" :class="isFlash ? '!animate-flash' : ''" @click="handleFlash">
+      <div class="w-fit flex justify-end items-end space-x-6 bg-primary-950 rounded-lg px-6 p-1">
+        <div class="space-x-2 group-hover/wrapper:skew-x-12">
+          <span v-for="(tag, i) in content.tech" :key="i" class="text-primary-900 dark:text-primary-100 text-sm font-normal after:content-['|'] after:ml-2 last:after:content-none">{{ tag }}</span>
+        </div>
+        <span class="text-primary-900 dark:text-primary-100 text-base group-hover/wrapper:skew-x-12">•</span>
+        <span class="text-primary-900 dark:text-primary-100 text-5xl font-display group-hover/grad:grad transition-all h-fit group-hover/wrapper:skew-x-12">{{ content.name }}</span>
       </div>
-      <span class="text-primary-900 dark:text-primary-100 text-base">•</span>
-      <span class="text-primary-900 dark:text-primary-100 font-display hover:grad transition-all h-fit" :class="classes">{{ content.name }}</span>
     </div>
 
     <UModal
@@ -27,7 +29,7 @@ type MyWorksItem = {
   images?: string[]
 }
 
-const props = defineProps({
+defineProps({
   content: {
     type: Object as PropType<MyWorksItem>,
     required: true,
@@ -42,28 +44,9 @@ defineOptions({
   name: 'CardMyWorksItemComponent',
 })
 
-const textSizes = ['text-lg', 'text-xl', 'text-1xl', 'text-2xl', 'text-3xl', 'text-4xl', 'text-5xl']
-
 const isOpen = ref(false)
-const classes = ref('')
-
-const isAnimate = computed(() => props.animating)
-
-watch(isAnimate, (value: boolean) => {
-  if (!value) classes.value = getRandomTextSize()
-})
-
-onMounted(() => {
-  classes.value = getRandomTextSize()
-})
-
-/**
- * get random index from translate array
- */
-const getRandomTextSize = (): string => {
-  const index = Math.floor(Math.random() * 6)
-  return textSizes[index]
-}
+const timeout = ref<NodeJS.Timeout>()
+const isFlash = ref(false)
 
 /**
  * Handle open modal.
@@ -72,6 +55,19 @@ const getRandomTextSize = (): string => {
 // const handleOpenModal = () => {
 //   isOpen.value = true
 // }
+
+/**
+ * Handle Flash
+ * remove flash after .5 s
+ */
+const handleFlash = () => {
+  isFlash.value = true
+
+  if (timeout.value) clearTimeout(timeout.value)
+  timeout.value = setTimeout(() => {
+    isFlash.value = false
+  }, 600)
+}
 </script>
 
 <style>
@@ -93,7 +89,11 @@ const getRandomTextSize = (): string => {
   -moz-box-shadow: -18px 6px 42px 9px rgba(0, 0, 0, 0.75);
 }
 
-.hover\:grad:hover {
+.hover\:wrapper:hover {
+  @apply p-2 rounded-xl -skew-x-12 animate-wrap bg-gradient-to-r from-primary-600 via-primary-100 to-primary-600;
+}
+
+.group\/grad:hover .group-hover\/grad\:grad {
   @apply text-6xl font-bold animate-text bg-gradient-to-r from-primary-100 via-primary-600 to-primary-100 bg-clip-text text-transparent;
 }
 </style>

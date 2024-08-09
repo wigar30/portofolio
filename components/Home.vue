@@ -12,7 +12,7 @@
             <p class="text-6xl font-medium text-primary-900 dark:text-primary-700 whitespace-pre-wrap fade-out" :class="isAnimated ? 'fade-in' : ''">a frontend developer based in Yogyakarta</p>
             <div class="flex items-end mt-2">
               <!-- eslint-disable-next-line prettier/prettier -->
-              <p class="text-6xl font-medium text-primary-900 dark:text-primary-700 whitespace-pre-wrap fade-out" :class="isAnimated ? 'fade-in' : ''">welcome to my </p>
+              <p class="text-6xl font-medium text-primary-900 dark:text-primary-700 whitespace-pre-wrap fade-out" :class="isAnimated ? 'fade-in' : ''">welcome to my</p>
               <span class="text-6xl font-medium text-primary-900 dark:text-primary-700 fade-in-hidden" :class="isAnimated ? 'fade-in' : ''">Portofolio.</span>
               <p id="end-div-text" class="font-bold text-2xl text-primary-900 dark:text-primary-700"></p>
             </div>

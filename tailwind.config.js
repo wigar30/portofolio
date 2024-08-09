@@ -42,6 +42,8 @@ module.exports = {
         blob: 'blob 8s infinite',
         height: 'height 4s linear infinite',
         text: 'text 5s ease infinite',
+        wrap: 'wrap 5s ease infinite',
+        flash: 'flash .8s cubic-bezier(0.4, 0, 0.6, 1)',
       },
       keyframes: {
         blob: {
@@ -53,6 +55,15 @@ module.exports = {
           },
           '100%': {
             transform: 'translate(0px, 0px) scale(1)',
+          },
+        },
+
+        flash: {
+          '0%, 40%, 100%': {
+            opacity: '.2',
+          },
+          '20%, 60%': {
+            opacity: '1',
           },
         },
 
@@ -85,6 +96,17 @@ module.exports = {
             'background-position': 'left center',
           },
           '50%': {
+            'background-size': '200% 200%',
+            'background-position': 'right center',
+          },
+        },
+
+        wrap: {
+          '0%, 100%': {
+            'background-size': '200% 200%',
+            'background-position': 'left center',
+          },
+          '30%': {
             'background-size': '200% 200%',
             'background-position': 'right center',
           },
