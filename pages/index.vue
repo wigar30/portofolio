@@ -66,7 +66,7 @@ const mousewheelActive: MousewheelOptions = {
 const pagination: PaginationOptions = {
   clickable: true,
   renderBullet: (index: number, className: string) => {
-    return '<span class="' + className + ` ${index === 0 ? 'custom-bullet-dark' : 'custom-bullet-light'}">` + menu[index] + '</span>'
+    return '<span class="' + className + ' custom-bullet-light">' + menu[index] + '</span>'
   },
 }
 
@@ -75,27 +75,18 @@ const handleSwiper = (swiper: SwiperType) => {
     swiper.navigation.destroy()
   }
 
-  swiper.pagination.bullets[0].classList.add('swiper-pagination-bullet-active-dark')
+  swiper.pagination.bullets[0].classList.add('swiper-pagination-bullet-active-light')
   swiper.pagination.bullets[menu.length].classList.add('!hidden')
 }
 
 const handleSlideChange = (swiper: SwiperType) => {
   nextTick(() => {
-    if (swiper.activeIndex !== 0) {
-      for (let index = 0; index <= menu.length; index++) {
-        swiper.pagination.bullets[index].classList.remove('swiper-pagination-bullet-active-dark', 'swiper-pagination-bullet-active-light')
-      }
-      swiper.pagination.bullets[0].classList.add('custom-bullet-light')
-      swiper.pagination.bullets[swiper.activeIndex].classList.add('swiper-pagination-bullet-active-light')
-      swiper.updateSlidesClasses()
-    } else {
-      for (let index = 0; index <= menu.length; index++) {
-        swiper.pagination.bullets[index].classList.remove('swiper-pagination-bullet-active-light', 'swiper-pagination-bullet-active-dark')
-      }
-      swiper.pagination.bullets[0].classList.remove('custom-bullet-light')
-      swiper.pagination.bullets[0].classList.add('swiper-pagination-bullet-active-dark')
-      swiper.updateSlidesClasses()
+    for (let index = 0; index <= menu.length; index++) {
+      swiper.pagination.bullets[index].classList.remove('swiper-pagination-bullet-active-dark', 'swiper-pagination-bullet-active-light')
     }
+    swiper.pagination.bullets[0].classList.add('custom-bullet-light')
+    swiper.pagination.bullets[swiper.activeIndex].classList.add('swiper-pagination-bullet-active-light')
+    swiper.updateSlidesClasses()
   })
 }
 
@@ -123,13 +114,13 @@ const handleReachEnd = (swiper: SwiperType) => {
 }
 
 .custom-bullet-dark {
-  @apply text-sm text-primary-300 dark:text-primary-700 relative after:bg-primary-300 dark:after:bg-primary-700 after:absolute after:h-0.5 after:w-0 after:bottom-0 after:left-0 after:transition-all after:duration-300 select-none;
+  @apply text-sm text-primary-300 dark:text-primary-700 font-display relative after:bg-primary-300 dark:after:bg-primary-700 after:absolute after:h-0.5 after:w-0 after:bottom-0 after:left-0 after:transition-all after:duration-300 select-none;
   background-color: transparent;
   width: fit-content;
   height: fit-content;
 }
 .custom-bullet-light {
-  @apply text-sm text-primary-300 dark:text-primary-300 relative after:bg-primary-700 dark:after:bg-primary-300 after:absolute after:h-0.5 after:w-0 after:bottom-0 after:left-0 after:transition-all after:duration-300 select-none;
+  @apply text-sm text-primary-300 dark:text-primary-300 font-display relative after:bg-primary-700 dark:after:bg-primary-300 after:absolute after:h-0.5 after:w-0 after:bottom-0 after:left-0 after:transition-all after:duration-300 select-none;
   background-color: transparent;
   width: fit-content;
   height: fit-content;

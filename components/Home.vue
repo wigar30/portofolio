@@ -1,25 +1,23 @@
 <template>
-  <div class="w-full h-full border border-primary-50 bg-primary-100 bg-opacity-20 backdrop-blur-sm rounded-2xl overflow-hidden">
-    <BackgroundHome class="z-0" :animate="active">
-      <div id="home-text" class="w-full h-full flex items-center justify-center flex-col space-y-4 z-10 absolute opacity-100">
-        <div>
-          <div class="flex">
-            <p id="div-text" class="font-bold text-xl text-primary-900 dark:text-primary-700"></p>
-            <p class="text-7xl font-black fade-out text-primary-900 dark:text-primary-700" :class="isAnimated ? 'fade-in' : ''">Hey. I'm Wigar</p>
-            <p class="text-7xl font-black delay-700 duration-1000 text-primary-900 dark:text-primary-700 transition-opacity" :class="isAnimated ? 'fade-in' : 'fade-out'">,</p>
-          </div>
-          <div class="flex flex-col mt-6">
-            <p class="text-6xl font-medium text-primary-900 dark:text-primary-700 whitespace-pre-wrap fade-out" :class="isAnimated ? 'fade-in' : ''">a frontend developer based in Yogyakarta</p>
-            <div class="flex items-end mt-2">
-              <!-- eslint-disable-next-line prettier/prettier -->
-              <p class="text-6xl font-medium text-primary-900 dark:text-primary-700 whitespace-pre-wrap fade-out" :class="isAnimated ? 'fade-in' : ''">welcome to my</p>
-              <span class="text-6xl font-medium text-primary-900 dark:text-primary-700 fade-in-hidden" :class="isAnimated ? 'fade-in' : ''">Portofolio.</span>
-              <p id="end-div-text" class="font-bold text-2xl text-primary-900 dark:text-primary-700"></p>
-            </div>
+  <div class="w-full h-full overflow-hidden">
+    <div id="home-text" class="w-full h-full flex items-center justify-center flex-col space-y-4 z-10 absolute opacity-100">
+      <div>
+        <div class="flex">
+          <p id="div-text" class="font-bold text-xl text-primary-900 dark:text-primary-200"></p>
+          <p class="text-7xl font-black fade-out text-primary-900 dark:text-primary-200" :class="isAnimated ? 'fade-in' : ''">Hey. I'm Wigar</p>
+          <p class="text-7xl font-black delay-700 duration-1000 text-primary-900 dark:text-primary-200 transition-opacity" :class="isAnimated ? 'fade-in' : 'fade-out'">,</p>
+        </div>
+        <div class="flex flex-col mt-6">
+          <p class="text-6xl font-medium text-primary-900 dark:text-primary-200 whitespace-pre-wrap fade-out" :class="isAnimated ? 'fade-in' : ''">a frontend developer based in Yogyakarta</p>
+          <div class="flex items-end mt-2">
+            <!-- eslint-disable-next-line prettier/prettier -->
+            <p class="text-6xl font-medium text-primary-900 dark:text-primary-200 whitespace-pre-wrap fade-out" :class="isAnimated ? 'fade-in' : ''">welcome to my</p>
+            <span class="text-6xl font-medium text-primary-900 dark:text-primary-200 fade-in-hidden" :class="isAnimated ? 'fade-in' : ''">Portofolio.</span>
+            <p id="end-div-text" class="font-bold text-2xl text-primary-900 dark:text-primary-200"></p>
           </div>
         </div>
       </div>
-    </BackgroundHome>
+    </div>
   </div>
 </template>
 
