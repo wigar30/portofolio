@@ -3,7 +3,7 @@
     class="h-[600px] pr-6 mb-6 overflow-y-auto whitespace-nowrap space-y-6 after:bg-primary-900 dark:after:bg-primary-100 relative after:absolute after:h-0 after:w-1 after:top-0 after:right-0 after:transition-all after:duration-500"
     :class="animate ? 'after:h-full' : 'after:h-0'"
   >
-    <CardMyWorksItem v-for="(item, i) in contents" :key="i" :content="item" :animating="animate" class="" />
+    <CardMyWorksItem v-for="(item, i) in contents" :key="i" :content="item" :animating="animate" @click="handleSelectItem(item)" />
   </div>
 </template>
 
@@ -26,6 +26,7 @@ import trade3 from '~/assets/images/trade-3.webp'
 import trade4 from '~/assets/images/trade-4.webp'
 import forest1 from '~/assets/images/forest-1.webp'
 import forest2 from '~/assets/images/forest-2.webp'
+import type { Work } from '~/types/Module/Works'
 
 defineProps({
   animate: {
@@ -38,7 +39,23 @@ defineOptions({
   name: 'CardMyWorksComponent',
 })
 
-const contents = [
+const timeout = ref<NodeJS.Timeout>()
+
+const common = useCommon()
+
+const handleSelectItem = (work: Work) => {
+  if (timeout.value) {
+    clearTimeout(timeout.value)
+    return
+  }
+
+  timeout.value = setTimeout(() => {
+    common.setWork(work)
+    timeout.value = undefined
+  }, 650)
+}
+
+const contents: Work[] = [
   {
     name: 'Gameskii Landing Page',
     desc: '',

@@ -22,16 +22,11 @@
 </template>
 
 <script setup lang="ts">
-type MyWorksItem = {
-  name: string
-  desc: string
-  tech: string[]
-  images?: string[]
-}
+import type { Work } from '~/types/Module/Works'
 
 defineProps({
   content: {
-    type: Object as PropType<MyWorksItem>,
+    type: Object as PropType<Work>,
     required: true,
   },
   animating: {
@@ -90,7 +85,7 @@ const handleFlash = () => {
 }
 
 .hover\:wrapper:hover {
-  @apply p-2 -skew-x-12 bg-gradient-to-r from-primary-600 via-primary-100 to-primary-600;
+  @apply p-2 -skew-x-12 bg-grad-to-r;
 }
 
 .group\/grad:hover .group-hover\/grad\:grad {
