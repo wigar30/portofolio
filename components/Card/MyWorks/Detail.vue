@@ -1,15 +1,18 @@
 <template>
   <UCard
     v-if="content"
-    class=""
+    class="-skew-x-12"
     :ui="{
+      body: { base: 'skew-x-12' },
+      header: { base: 'skew-x-12' },
+      footer: { base: 'skew-x-12' },
       divide: 'divide-y divide-primary-200 dark:divide-primary-800',
       background: '!bg-transparent',
       shadow: 'shadow-none',
     }"
   >
     <template #header>
-      <p class="text-xl font-semibold text-primary-900 dark:text-primary-200 mb-4">{{ content.name }}</p>
+      <p class="text-3xl font-display font-semibold text-primary-900 dark:text-primary-200 mb-4">{{ content.name }}</p>
 
       <div class="w-full flex items-center whitespace-nowrap overflow-x-auto styled-scroll space-x-2">
         <div v-for="(img, i) in content.images" :key="i" class="w-64 max-h-40 flex-none inline-block overflow-hidden rounded-lg cursor-pointer" @click="handleOpenImage(img)">

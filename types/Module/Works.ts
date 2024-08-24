@@ -3,5 +3,5 @@ export type Work = {
   desc: string
   color?: string
   tech: string[]
-  images: string[]
+  images?: string[]
 }
