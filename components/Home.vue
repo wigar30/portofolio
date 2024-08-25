@@ -1,21 +1,22 @@
 <template>
   <div class="w-full h-full overflow-hidden">
-    <div id="home-text" class="w-full h-full flex items-center justify-center flex-col space-y-4 z-10 absolute opacity-100">
+    <div id="home-text" class="w-full h-full bg-primary-950 flex items-center justify-center center flex-col space-y-4 z-10 absolute opacity-100">
       <div>
         <div class="flex">
-          <p id="div-text" class="font-bold text-xl text-primary-900 dark:text-primary-200"></p>
-          <p class="text-7xl font-black fade-out text-primary-900 dark:text-primary-200" :class="isAnimated ? 'fade-in' : ''">Hey. I'm Wigar</p>
-          <p class="text-7xl font-black delay-700 duration-1000 text-primary-900 dark:text-primary-200 transition-opacity" :class="isAnimated ? 'fade-in' : 'fade-out'">,</p>
+          <p class="text-4xl sm:text-7xl font-black fade-out text-primary-900 dark:text-primary-200 font-display select-none cursor-default" :class="isAnimated ? 'fade-in' : ''">Hey. I'm Wigar</p>
+          <p
+            class="text-4xl sm:text-7xl font-black delay-700 duration-1000 text-primary-900 dark:text-primary-200 transition-opacity font-display select-none cursor-default"
+            :class="isAnimated ? 'fade-in' : 'fade-out'"
+          >
+            ,
+          </p>
         </div>
-        <div class="flex flex-col mt-6">
-          <p class="text-6xl font-medium text-primary-900 dark:text-primary-200 whitespace-pre-wrap fade-out" :class="isAnimated ? 'fade-in' : ''">a frontend developer based in Yogyakarta</p>
-          <div class="flex items-end mt-2">
-            <!-- eslint-disable-next-line prettier/prettier -->
-            <p class="text-6xl font-medium text-primary-900 dark:text-primary-200 whitespace-pre-wrap fade-out" :class="isAnimated ? 'fade-in' : ''">welcome to my</p>
-            <span class="text-6xl font-medium text-primary-900 dark:text-primary-200 fade-in-hidden" :class="isAnimated ? 'fade-in' : ''">Portofolio.</span>
-            <p id="end-div-text" class="font-bold text-2xl text-primary-900 dark:text-primary-200"></p>
-          </div>
-        </div>
+        <p
+          class="ml-4 text-3xl sm:text-6xl font-display font-medium text-primary-900 dark:text-primary-200 whitespace-pre-wrap fade-out grad transition-all select-none cursor-default"
+          :class="isAnimated ? 'fade-in' : ''"
+        >
+          a frontend developer
+        </p>
       </div>
     </div>
   </div>
@@ -33,12 +34,8 @@ const props = defineProps({
   },
 })
 
-const firstText = useTextAnimation()
-const secondText = useTextAnimation()
 const timeOut = ref<ReturnType<typeof setTimeout> | null>(null)
 const isAnimated = ref(false)
-const divText = '<div>'
-const endDivText = '</div>'
 
 const isActive = computed(() => props.active)
 
@@ -48,13 +45,9 @@ watch(isActive, (newValue: boolean) => {
   if (newValue) {
     timeOut.value = setTimeout(() => {
       isAnimated.value = true
-      firstText.wordflick('div-text', divText)
-      secondText.wordflick('end-div-text', endDivText, 1500)
     }, 200)
   } else {
     isAnimated.value = false
-    firstText.clearWordflick('div-text')
-    secondText.clearWordflick('end-div-text')
   }
 })
 </script>
@@ -74,13 +67,14 @@ watch(isActive, (newValue: boolean) => {
   transform: translate(0, 0);
 }
 
-.progress-animation:after {
-  content: '';
-  position: absolute;
-  left: 0px;
-  bottom: 0px;
-  height: 4px;
-  background: #26a69a;
-  animation: progress 2100ms cubic-bezier(0.65, 0.81, 0.73, 0.4) infinite;
+@media (max-width: 639px) {
+  .grad {
+    @apply animate-text bg-gradient-to-r from-primary-100 via-primary-600 to-primary-100 bg-clip-text !text-transparent;
+  }
+}
+@media (min-width: 640px) {
+  .grad:hover {
+    @apply animate-text bg-gradient-to-r from-primary-100 via-primary-600 to-primary-100 bg-clip-text text-transparent;
+  }
 }
 </style>

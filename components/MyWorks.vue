@@ -8,7 +8,7 @@
 
     <div
       class="w-[90%] h-screen bg-primary-950 flex-none overflow-x-hidden border-primary-200 -skew-x-12 transition-all duration-500 delay-100"
-      :class="state.slider ? '-translate-x-[90%] border-l-8' : ''"
+      :class="state.slider ? '-translate-x-[90%] border-l-8' : 'translate-x-[50%] sm:translate-x-0'"
     >
       <UContainer as="section" class="w-full h-screen p-6 z-10 ml-16 skew-x-12">
         <div
