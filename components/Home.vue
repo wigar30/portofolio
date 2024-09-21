@@ -1,7 +1,7 @@
 <template>
-  <div class="w-full h-full overflow-hidden">
+  <div class="w-full h-full overflow-hidden skew-x-12 border-l-4 border-gray-200">
     <div id="home-text" class="w-full h-full bg-primary-950 flex items-center justify-center center flex-col space-y-4 z-10 absolute opacity-100">
-      <div>
+      <div class="-skew-x-12">
         <div class="flex">
           <p class="text-4xl sm:text-7xl font-black fade-out text-primary-900 dark:text-primary-200 font-display select-none cursor-default" :class="isAnimated ? 'fade-in' : ''">Hey. I'm Wigar</p>
           <p
@@ -23,6 +23,8 @@
 </template>
 
 <script setup lang="ts">
+import { useSwiper } from 'swiper/vue'
+
 defineOptions({
   name: 'HomeComponent',
 })
@@ -37,12 +39,15 @@ const props = defineProps({
 const timeOut = ref<ReturnType<typeof setTimeout> | null>(null)
 const isAnimated = ref(false)
 
+const swiper = useSwiper()
+
 const isActive = computed(() => props.active)
 
 watch(isActive, (newValue: boolean) => {
   if (timeOut.value) clearTimeout(timeOut.value)
 
   if (newValue) {
+    swiper.value.mousewheel.enable()
     timeOut.value = setTimeout(() => {
       isAnimated.value = true
     }, 200)

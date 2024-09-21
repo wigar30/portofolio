@@ -8,6 +8,7 @@
       :mousewheel="mousewheelActive"
       :pagination="pagination"
       :modules="modules"
+      :prevent-interaction-on-transition="true"
       @swiper="handleSwiper"
       @slide-change="handleSlideChange"
       @reach-end="handleReachEnd"
@@ -18,9 +19,9 @@
       <SwiperSlide v-slot="{ isActive }">
         <MyWorks :active="isActive" />
       </SwiperSlide>
-      <SwiperSlide v-slot="{ isActive }">
+      <!-- <SwiperSlide v-slot="{ isActive }">
         <MyProjects :active="isActive" />
-      </SwiperSlide>
+      </SwiperSlide> -->
       <SwiperSlide v-slot="{ isActive }">
         <AboutMe :active="isActive" />
       </SwiperSlide>
@@ -44,9 +45,14 @@ defineOptions({
 })
 
 const modules: SwiperModule[] = [Mousewheel, Pagination]
-const menu: string[] = ['Home', 'My Works', 'My Project', 'About Me']
+const menu: string[] = ['Home', 'My Works', 'About Me']
 const timeout = ref<ReturnType<typeof setTimeout> | null>(null)
 const animatePagination = ref(false)
+const mousewheelActive = ref<MousewheelOptions>({
+  // enabled: false,
+  forceToAxis: true,
+  thresholdTime: 200,
+})
 
 onMounted(() => {
   if (timeout.value) clearTimeout(timeout.value)
@@ -57,11 +63,6 @@ onMounted(() => {
     pagination?.classList.add('!left-2')
   }, 800)
 })
-
-const mousewheelActive: MousewheelOptions = {
-  forceToAxis: true,
-  thresholdTime: 400,
-}
 
 const pagination: PaginationOptions = {
   clickable: true,

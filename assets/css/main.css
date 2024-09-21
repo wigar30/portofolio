@@ -55,6 +55,14 @@ html::-webkit-scrollbar-thumb {
   border: 3px solid theme('colors.lime.900');
 }
 
+.hidden-scroll::-webkit-scrollbar {
+  display: none;
+}
+.hidden-scroll {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
 @keyframes progress {
   0% {
     left: -35%;

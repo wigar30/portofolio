@@ -9,6 +9,8 @@
 </template>
 
 <script setup lang="ts">
+import { useSwiper } from 'swiper/vue'
+
 defineOptions({
   name: 'AboutMeComponent',
 })
@@ -20,6 +22,8 @@ const props = defineProps({
   },
 })
 
+const swiper = useSwiper()
+
 const timeOut = ref<ReturnType<typeof setTimeout> | null>(null)
 const isAnimated = ref(false)
 
@@ -29,6 +33,8 @@ watch(isActive, (newValue: boolean) => {
   if (timeOut.value) clearTimeout(timeOut.value)
 
   if (newValue) {
+    swiper.value.mousewheel.enable()
+
     timeOut.value = setTimeout(() => {
       isAnimated.value = true
     }, 200)

@@ -1,12 +1,12 @@
 <template>
-  <div class="w-full h-screen relative flex flex-nowrap overflow-x-hidden">
-    <div class="w-full h-screen bg-primary-950 flex-none overflow-x-hidden transition-all duration-500" :class="state.slider ? 'slide-left' : ''">
-      <UContainer as="section" class="w-full h-screen flex justify-end items-center z-10">
+  <div id="container-project" class="w-full h-screen relative flex flex-nowrap overflow-x-hidden skew-x-12 border-x-4 border-gray-200 hidden-scroll">
+    <div class="w-full h-[200vh] bg-primary-950 flex-none overflow-y-hidden transition-all duration-500" :class="state.slider ? '' : ''">
+      <UContainer as="section" class="w-full h-screen flex justify-end items-center overflow-hidden z-10">
         <CardMyProjects id="my-projects-card" :animate="isAnimated" />
       </UContainer>
     </div>
 
-    <div
+    <!-- <div
       class="w-[90%] h-screen bg-primary-950 flex-none overflow-x-hidden border-primary-200 -skew-x-12 transition-all duration-500 delay-100"
       :class="state.slider ? '-translate-x-[90%] border-l-8' : ''"
     >
@@ -27,14 +27,14 @@
             </svg>
           </button>
         </div>
-        <!-- <CardMyWorksDetail :content="work" /> -->
       </UContainer>
-    </div>
+    </div> -->
   </div>
 </template>
 
 <script setup lang="ts">
-import type { Timeout } from '~/types/Common/Timeout'
+import { useSwiper } from 'swiper/vue'
+// import type { Timeout } from '~/types/Common/Timeout'
 import type { Work } from '~/types/Module/Works'
 
 defineOptions({
@@ -49,10 +49,25 @@ const props = defineProps({
 })
 
 const state = ref({ return: false, slider: false })
-const timeOut = ref<{ slider: Timeout; return: Timeout }>({ slider: null, return: null })
+// const timeOut = ref<{ slider: Timeout; return: Timeout }>({ slider: null, return: null })
 const isAnimated = ref(false)
 
 const common = useCommon()
+const swiper = useSwiper()
+
+onMounted(() => {
+  const container = document.getElementById('container-project')
+  if (!container) return
+
+  container.addEventListener('scroll', handleScroll)
+})
+
+onBeforeUnmount(() => {
+  const container = document.querySelector('.container-project')
+  if (!container) return
+
+  container.removeEventListener('scroll', handleScroll)
+})
 
 const work = computed(() => common.currentWork.value)
 const isActive = computed(() => props.active)
@@ -61,30 +76,41 @@ watch(work, (newValue: Work | null) => {
   state.value.slider = Boolean(newValue)
 })
 
-watch(isActive, (newValue: boolean) => {
-  if (timeOut.value.slider) clearTimeout(timeOut.value.slider)
+watch(
+  () => isActive.value,
+  (newValue: boolean) => {
+    if (newValue) {
+      const container = document.getElementById('container-project')
+      if (!container) return
 
-  if (newValue) {
-    timeOut.value.slider = setTimeout(() => {
-      isAnimated.value = true
-    }, 200)
-  } else {
-    state.value.slider = false
-    common.setWork(null)
-    timeOut.value.slider = setTimeout(() => {
-      isAnimated.value = false
-    }, 200)
-  }
-})
+      container.scrollTo({ top: 20, behavior: 'instant' })
+    } else {
+      state.value.slider = false
+      common.setWork(null)
+    }
+  },
+)
 
-const handleReturn = () => {
-  state.value.return = true
+// const handleReturn = () => {
+//   state.value.return = true
 
-  if (timeOut.value.return) clearTimeout(timeOut.value.return)
-  timeOut.value.return = setTimeout(() => {
-    state.value = { return: false, slider: false }
-    common.setWork(null)
-  }, 600)
+//   if (timeOut.value.return) clearTimeout(timeOut.value.return)
+//   timeOut.value.return = setTimeout(() => {
+//     state.value = { return: false, slider: false }
+//     common.setWork(null)
+//   }, 600)
+// }
+
+const handleScroll = () => {
+  const container = document.getElementById('container-project')
+  if (!container) return
+
+  const scrollBottom = container.scrollTop + container.clientHeight
+  const totalHeight = container.scrollHeight
+
+  if (scrollBottom >= totalHeight - 50) swiper.value.mousewheel.enable()
+  else if (container.scrollTop <= 0) swiper.value.mousewheel.enable()
+  else swiper.value.mousewheel.disable()
 }
 </script>
 

@@ -5,3 +5,8 @@ export type Work = {
   tech: string[]
   images?: string[]
 }
+
+export type WorkWrapper = {
+  name: string
+  items: Work[]
+}

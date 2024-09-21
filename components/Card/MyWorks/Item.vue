@@ -1,36 +1,28 @@
 <template>
-  <div class="w-full pl-10 flex justify-end">
-    <div class="w-fit group/wrapper group/grad hover:wrapper cursor-pointer z-10" :class="isFlash ? 'animate-flash' : 'animate-wrap'" @click="handleFlash">
-      <div class="w-fit flex flex-col sm:flex-row justify-end items-end space-x-6 bg-primary-950 rounded-lg px-6 p-1">
-        <div class="space-x-2 group-hover/wrapper:skew-x-12 order-3 sm:order-1 sm:block">
-          <span v-for="(tag, i) in content.tech" :key="i" class="text-primary-900 dark:text-primary-100 text-xs sm:text-sm font-normal after:content-['|'] after:ml-2 last:after:content-none">
-            {{ tag }}
-          </span>
+  <div class="w-full pl-10 flex flex-col items-end">
+    <p class="mb-6 text-primary-900 dark:text-primary-100 text-xl sm:text-7xl font-display">{{ content.name }}</p>
+
+    <div class="w-full flex flex-col items-end pr-2 space-y-4">
+      <div v-for="(item, index) in content.items" :key="index" class="w-fit group/grad cursor-pointer z-10 animate-wrap" @click="handleFlash">
+        <div class="w-fit flex flex-col items-end space-x-6 bg-primary-950 rounded-lg px-6 p-1">
+          <span class="text-primary-900 dark:text-primary-100 text-xl sm:text-5xl font-display group-hover/grad:grad transition-all">{{ item.name }}</span>
+          <div class="w-full flex justify-end space-x-2">
+            <p v-for="(tag, i) in item.tech" :key="i" class="w-fit text-primary-900 dark:text-primary-100 text-xs sm:text-sm font-normal after:content-['|'] after:ml-2 last:after:content-none">
+              {{ tag }}
+            </p>
+          </div>
         </div>
-        <span class="text-primary-900 dark:text-primary-100 hidden sm:block sm:order-2 text-base group-hover/wrapper:skew-x-12">•</span>
-        <span class="text-primary-900 dark:text-primary-100 text-xl order-1 sm:order-3 sm:text-5xl font-display group-hover/grad:grad transition-all h-fit group-hover/wrapper:skew-x-12">
-          {{ content.name }}
-        </span>
       </div>
     </div>
-
-    <UModal
-      v-model="isOpen"
-      :ui="{
-        width: 'sm:max-w-full sm:w-3/4 md:w-1/2',
-      }"
-    >
-      <CardMyWorksDetail class="w-full" :content="content" />
-    </UModal>
   </div>
 </template>
 
 <script setup lang="ts">
-import type { Work } from '~/types/Module/Works'
+import type { WorkWrapper } from '~/types/Module/Works'
 
 defineProps({
   content: {
-    type: Object as PropType<Work>,
+    type: Object as PropType<WorkWrapper>,
     required: true,
   },
   animating: {
@@ -43,17 +35,9 @@ defineOptions({
   name: 'CardMyWorksItemComponent',
 })
 
-const isOpen = ref(false)
+// const isOpen = ref(false)
 const timeout = ref<NodeJS.Timeout>()
 const isFlash = ref(false)
-
-/**
- * Handle open modal.
- * Set isOpen reactive to true
- */
-// const handleOpenModal = () => {
-//   isOpen.value = true
-// }
 
 /**
  * Handle Flash
@@ -88,8 +72,8 @@ const handleFlash = () => {
   -moz-box-shadow: -18px 6px 42px 9px rgba(0, 0, 0, 0.75);
 }
 
-.hover\:wrapper:hover {
-  @apply p-2 -skew-x-12 bg-grad-to-r;
+.wrapper {
+  @apply p-2 bg-grad-to-r;
 }
 
 .group\/grad:hover .group-hover\/grad\:grad {
