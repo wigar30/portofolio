@@ -1,5 +1,5 @@
 <template>
-  <div class="pt-12 pr-6 mb-6 overflow-y-auto whitespace-nowrap space-y-6 relative">
+  <div class="pt-12 pr-6 mb-6 h-[calc(100vh-48px)] overflow-y-auto overflow-x-hidden whitespace-nowrap space-y-6 relative hidden-scroll border-x-[6px] border-b-[6px] border-white rounded-md">
     <CardMyWorksItem v-for="(item, i) in contents" :key="i" :content="item" :animating="animate" />
   </div>
 </template>

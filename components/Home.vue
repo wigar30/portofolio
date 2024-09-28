@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full h-full overflow-hidden skew-x-12 border-l-4 border-gray-200">
+  <div class="w-screen h-screen overflow-hidden skew-x-12 border-x-[6px] border-t-[6px] rounded-t-md border-gray-200">
     <div id="home-text" class="w-full h-full bg-primary-950 flex items-center justify-center center flex-col space-y-4 z-10 absolute opacity-100">
       <div class="-skew-x-12">
         <div class="flex">
@@ -23,37 +23,18 @@
 </template>
 
 <script setup lang="ts">
-import { useSwiper } from 'swiper/vue'
-
 defineOptions({
   name: 'HomeComponent',
-})
-
-const props = defineProps({
-  active: {
-    type: Boolean,
-    default: false,
-  },
 })
 
 const timeOut = ref<ReturnType<typeof setTimeout> | null>(null)
 const isAnimated = ref(false)
 
-const swiper = useSwiper()
-
-const isActive = computed(() => props.active)
-
-watch(isActive, (newValue: boolean) => {
+onMounted(() => {
   if (timeOut.value) clearTimeout(timeOut.value)
-
-  if (newValue) {
-    swiper.value.mousewheel.enable()
-    timeOut.value = setTimeout(() => {
-      isAnimated.value = true
-    }, 200)
-  } else {
-    isAnimated.value = false
-  }
+  timeOut.value = setTimeout(() => {
+    isAnimated.value = true
+  }, 200)
 })
 </script>
 
@@ -72,14 +53,7 @@ watch(isActive, (newValue: boolean) => {
   transform: translate(0, 0);
 }
 
-@media (max-width: 639px) {
-  .grad {
-    @apply animate-text bg-gradient-to-r from-primary-100 via-primary-600 to-primary-100 bg-clip-text !text-transparent;
-  }
-}
-@media (min-width: 640px) {
-  .grad:hover {
-    @apply animate-text bg-gradient-to-r from-primary-100 via-primary-600 to-primary-100 bg-clip-text text-transparent;
-  }
+.grad {
+  @apply animate-text bg-gradient-to-r from-primary-100 via-primary-600 to-primary-100 bg-clip-text !text-transparent;
 }
 </style>

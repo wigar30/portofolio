@@ -1,10 +1,8 @@
 <template>
-  <div class="w-full h-screen">
-    <BackgroundAboutMe class="z-0">
-      <UContainer as="section" class="absolute w-screen h-screen flex justify-end space-x-6 items-end z-10">
-        <CardAboutMe id="about-me-card" class="z-20" :animate="isAnimated" />
-      </UContainer>
-    </BackgroundAboutMe>
+  <div class="w-screen h-screen overflow-x-hidden">
+    <UContainer as="section" class="w-full h-screen flex justify-end space-x-6 items-end z-10">
+      <CardAboutMe id="about-me-card" class="z-20" :animate="isAnimated" />
+    </UContainer>
   </div>
 </template>
 
