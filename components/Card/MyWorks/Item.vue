@@ -1,7 +1,7 @@
 <template>
   <div class="w-[550px] pl-10 flex flex-col items-end mt-10">
     <div class="w-full self-start">
-      <p class="mb-6 text-xl sm:text-7xl font-display text-primary-500 float-end">{{ content.name }}</p>
+      <p class="w-fit mb-6 text-xl sm:text-7xl font-display text-primary-500 float-end">{{ content.name }}</p>
     </div>
 
     <div class="w-full flex flex-col items-end pr-2 space-y-4">
