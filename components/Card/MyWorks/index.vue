@@ -1,6 +1,8 @@
 <template>
-  <div class="pt-12 pr-6 mb-6 h-[calc(100vh-48px)] overflow-y-auto overflow-x-hidden whitespace-nowrap space-y-6 relative hidden-scroll border-x-[6px] border-b-[6px] border-white rounded-md">
-    <CardMyWorksItem v-for="(item, i) in contents" :key="i" :content="item" :animating="animate" />
+  <div class="py-12 pr-6 mb-6 h-[calc(100vh-48px)] overflow-y-auto whitespace-nowrap space-y-6 hidden-scroll rounded-md overscroll-contain">
+    <div id="wrapper-works">
+      <CardMyWorksItem v-for="(item, i) in contents" :key="i" :content="item" :animating="animate" />
+    </div>
   </div>
 </template>
 
@@ -36,7 +38,23 @@ defineOptions({
   name: 'CardMyWorksComponent',
 })
 
-const contents: WorkWrapper[] = [
+onMounted(() => {
+  const container = document.getElementById('my-works-card')
+  if (!container) return
+
+  container.addEventListener('scroll', infiniteScroll)
+})
+
+onUnmounted(() => {
+  const container = document.getElementById('my-works-card')
+  if (!container) return
+  container.removeEventListener('scroll', infiniteScroll)
+})
+
+const contents = ref<WorkWrapper[]>()
+const oldHeight = ref<number>(0)
+const newHeight = ref<number>(0)
+contents.value = [
   {
     name: 'My Works',
     items: [
@@ -100,4 +118,33 @@ const contents: WorkWrapper[] = [
     ],
   },
 ]
+
+const infiniteScroll = (ev: Event) => {
+  const target = ev.target as Element
+  if (!target) return
+
+  const maxScroll = target.scrollHeight - target.clientHeight
+  const currentScroll = target.scrollTop
+
+  if (!contents.value?.length) return
+  if (currentScroll >= maxScroll) {
+    contents.value.push(...contents.value.slice(0, 2))
+    if (contents.value.length > 10) {
+      contents.value = contents.value.slice(10)
+    }
+  }
+
+  /**
+   * TODO: Need to find another logic
+   */
+  if (currentScroll <= 0) {
+    oldHeight.value = newHeight.value
+    newHeight.value = maxScroll
+    contents.value.unshift(...contents.value.slice(0, 2))
+    target.scrollTop = newHeight.value - oldHeight.value
+    if (contents.value.length > 10) {
+      contents.value = contents.value.slice(10)
+    }
+  }
+}
 </script>
