@@ -127,10 +127,15 @@ const infiniteScroll = (ev: Event) => {
   const currentScroll = target.scrollTop
 
   if (!contents.value?.length) return
-  if (currentScroll + 1 >= maxScroll) {
+  if (currentScroll >= maxScroll) {
     contents.value.push(...contents.value.slice(0, 2))
     if (contents.value.length > 10) {
-      contents.value = contents.value.slice(10)
+      const wrapper = document.getElementById('wrapper-works')
+      if (!wrapper) return
+
+      const [el1, el2] = wrapper.children
+      el1?.remove()
+      el2?.remove()
     }
   }
 

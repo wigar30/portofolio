@@ -39,8 +39,12 @@ module.exports = {
         },
       },
       backgroundImage: (theme) => ({
-        'grad-to-r': `linear-gradient(to right, ${theme('colors.black.600')} var(--tw-gradient-from-position), ${theme('colors.black.100')} var(--tw-gradient-via-position), ${theme('colors.black.600')} var(--tw-gradient-to-position))`,
-        'grad-to-l': `linear-gradient(to left, ${theme('colors.black.100')} var(--tw-gradient-from-position), ${theme('colors.black.600')} var(--tw-gradient-via-position), ${theme('colors.black.100')} var(--tw-gradient-to-position))`,
+        'grad-to-r': `linear-gradient(to right, ${theme('colors.black.600')} var(--tw-gradient-from-position), ${theme('colors.black.100')} var(--tw-gradient-via-position), ${theme(
+          'colors.black.600',
+        )} var(--tw-gradient-to-position))`,
+        'grad-to-l': `linear-gradient(to left, ${theme('colors.black.100')} var(--tw-gradient-from-position), ${theme('colors.black.600')} var(--tw-gradient-via-position), ${theme(
+          'colors.black.100',
+        )} var(--tw-gradient-to-position))`,
       }),
       animation: {
         blob: 'blob 8s infinite',
