@@ -7,6 +7,7 @@
 </template>
 
 <script setup lang="ts">
+import { detect } from 'detect-browser'
 import gredu1 from '~/assets/images/gredu-dashboard-1.webp'
 import gredu2 from '~/assets/images/gredu-dashboard-2.webp'
 import gredu3 from '~/assets/images/gredu-dashboard-3.webp'
@@ -128,15 +129,21 @@ const infiniteScroll = (ev: Event) => {
 
   if (!contents.value?.length) return
   if (currentScroll >= maxScroll) {
-    contents.value.push(...contents.value.slice(0, 2))
     if (contents.value.length > 10) {
-      const wrapper = document.getElementById('wrapper-works')
-      if (!wrapper) return
+      const browser = detect()
 
-      const [el1, el2] = wrapper.children
-      el1?.remove()
-      el2?.remove()
+      if (browser?.name === 'safari') {
+        contents.value = contents.value.splice(0, 2)
+      } else {
+        const wrapper = document.getElementById('wrapper-works')
+        if (!wrapper) return
+
+        const [el1, el2] = wrapper.children
+        el1?.remove()
+        el2?.remove()
+      }
     }
+    contents.value.push(...contents.value.slice(0, 2))
   }
 
   /**
